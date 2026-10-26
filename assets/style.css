@@ -162,6 +162,10 @@ body.modal-open{overflow:hidden}
 .task-generation-intro p+p{margin-top:12px}
 
 .training-section .section-heading>p strong{font-weight:500;color:#334155}
+.training-intro-actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px 20px;margin:21px 0 0 72px}
+.training-intro-actions .button{font-size:12px;padding:10px 15px;white-space:nowrap}
+.training-intro-actions>span{font-size:12px;line-height:1.7;color:#8190a5}
+.methods-label{margin-bottom:19px;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#475569}
 .training-quickstart{margin-top:30px;padding-top:26px;border-top:1px solid #e2e8f0}
 .training-run-heading{display:flex;align-items:center;justify-content:space-between;gap:20px}
 .training-run-heading h3{font-size:19px;font-weight:500;letter-spacing:-.3px}
@@ -170,3 +174,5 @@ body.modal-open{overflow:hidden}
 .training-quickstart code{font:inherit}
 .training-quickstart>.training-run-note{font-size:11px;color:#8190a5}
 @media(max-width:600px){.training-run-heading{align-items:flex-start;gap:12px}.training-run-heading h3{font-size:17px}.training-run-heading .text-link{font-size:11px}.training-quickstart>p{font-size:13px}.training-quickstart pre{padding:15px;font-size:10px}.training-quickstart>.training-run-note{font-size:10px}}
+@media(max-width:800px){.training-intro-actions{margin-left:64px}}
+@media(max-width:600px){.training-intro-actions{margin-left:0;gap:10px}.training-intro-actions>span{font-size:11px}.methods .granularity{line-height:1.7}}
