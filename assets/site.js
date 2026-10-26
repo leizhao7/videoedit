@@ -353,3 +353,11 @@ renderRail();
 applyAudio();
 updateTransport();
 setFeature(featureIndex);
+
+// README and model-card links can open a specific selected comparison.
+const requestedExample = new URLSearchParams(window.location.search).get('example');
+const linkedExample = examples.find(example => example.number === requestedExample || example.id === requestedExample);
+if (linkedExample) {
+  const opener = Array.from(document.querySelectorAll('.example-tile')).find(tile => tile.dataset.id === linkedExample.id) || $('#feature-open');
+  openComparison(linkedExample, opener);
+}
