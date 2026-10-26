@@ -217,3 +217,26 @@ body.modal-open{overflow:hidden}
 @media(max-width:1100px){.finding-feature{gap:30px}.finding-copy h3{font-size:25px}.finding-copy>p{font-size:14px}.finding-behavior-table{padding:20px 17px 0}.finding-behavior-table th,.finding-behavior-table td{padding-inline:6px}}
 @media(max-width:900px){.finding-feature,.finding-feature:nth-child(2){grid-template-columns:1fr;gap:26px;padding:35px 0}.finding-feature:nth-child(2) .finding-copy,.finding-feature:nth-child(2) .finding-visual{order:initial}.finding-copy{max-width:680px}.finding-copy h3{font-size:27px}.finding-copy>p{font-size:15px}.finding-metric{margin-top:19px}.finding-visual{max-width:760px;width:100%}}
 @media(max-width:600px){.hero-kicker{font-size:13px;max-width:330px;margin-bottom:9px}.hero-intro{margin-top:23px;font-size:13px;line-height:1.85;text-align:left}.finding-feature{gap:22px;padding:29px 0}.finding-feature:first-child{padding-top:6px}.finding-index{font-size:9px;margin-bottom:12px}.finding-copy h3{font-size:24px;letter-spacing:-.5px}.finding-copy>p{margin-top:13px;font-size:14px}.finding-metric>strong{font-size:37px}.finding-metric-change>strong{font-size:32px;gap:10px}.finding-metric>span{font-size:10px}.finding-visual{border-radius:12px;padding:9px 7px 0}.finding-visual>figcaption{font-size:10px;padding:5px 9px 14px}.finding-behavior-table{padding:18px 13px 0}.finding-behavior-table caption{font-size:11px;padding-bottom:17px}.finding-behavior-table table{font-size:12px}.finding-behavior-table th,.finding-behavior-table td{padding:17px 5px}.finding-behavior-table tbody th{font-size:11px}.finding-behavior-table thead th{font-size:10px}.finding-behavior-table th>span{font-size:9px;max-width:110px}.behavior-gain{padding:3px 5px;font-size:10px}.finding-behavior-table>figcaption{padding:15px 0}.findings-scope{font-size:10px;margin-top:20px}}
+
+/* A soft poster backdrop frames the title while the center stays quiet. */
+.hero{position:relative;isolation:isolate;max-width:none;overflow:hidden;background:#fff}
+.hero-content{position:relative;max-width:1072px;margin-inline:auto}
+.hero-poster-backdrop{position:absolute;z-index:-2;inset:-80px -40px 0;background:url('film-poster-collage-2560.webp') center 44%/cover no-repeat;opacity:.32;filter:blur(6px) saturate(.8);transform:rotate(-4deg) scale(1.08);pointer-events:none}
+.hero::after{content:'';position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse 58% 100% at 50% 44%,#fffffffa 5%,#ffffffdf 48%,#ffffff40 100%),linear-gradient(180deg,#ffffff33 0%,#ffffff12 44%,#fffffff0 85%,#fff 100%);pointer-events:none}
+.hero-intro{color:#526174}
+.finding-behavior-table th,.finding-behavior-table td{padding-block:13px}
+.finding-behavior-table td:nth-child(3){font-weight:400;color:#475569}
+.finding-behavior-table .behavior-desirable td:last-child{font-weight:500;color:#17867f}
+.finding-behavior-table .behavior-group th{padding:18px 0 9px;border-top:0;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.65px;text-transform:uppercase;color:#8190a5}
+.finding-behavior-table .behavior-truncation td:nth-child(3){color:#b56b4c}
+.finding-behavior-table .behavior-truncation td:last-child{font-weight:500;color:#475569}
+.model-score-table{width:100%;margin-top:26px;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.model-score-table caption{padding-bottom:13px;text-align:left;font-size:12px;font-weight:500;color:#64748b}
+.model-score-table caption>span{float:right;font-size:10px;font-weight:400;color:#94a3b8}
+.model-score-table th,.model-score-table td{padding:11px 0;border-top:1px solid #edf0f5}
+.model-score-table th{text-align:left;font-size:12px;font-weight:400;color:#8190a5}
+.model-score-table td{text-align:right;color:#475569}
+.model-score-table .released-model-score th,.model-score-table .released-model-score td{font-weight:600;color:#17867f}
+.model-card>.model-eval-protocol{margin-top:7px;font-size:10px;line-height:1.7;color:#94a3b8}
+.model-card dl{margin-top:19px}
+@media(max-width:600px){.hero-poster-backdrop{inset:-25px -140px 0;opacity:.26;filter:blur(5px) saturate(.75);transform:rotate(-5deg) scale(1.1)}.hero::after{background:radial-gradient(ellipse 80% 100% at 50% 45%,#fffffff5 10%,#ffffffdd 58%,#ffffff66 100%),linear-gradient(180deg,#ffffff33,#ffffff12 50%,#fff 100%)}.finding-behavior-table .behavior-group th{font-size:8px;padding-top:15px}.model-score-table{margin-top:23px;font-size:12px}.model-score-table th{font-size:11px}.model-score-table caption{font-size:11px}.model-card>.model-eval-protocol{font-size:9px}}
