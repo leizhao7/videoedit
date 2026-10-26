@@ -158,3 +158,5 @@ body.modal-open{overflow:hidden}
 .task-film-wall figcaption,.task-generation-footer{justify-content:flex-end}
 @media(max-width:800px){.task-generation-intro{margin-left:64px;font-size:14px}}
 @media(max-width:600px){.task-generation-intro{margin:-5px 0 23px;font-size:13px;line-height:1.85}}
+
+.task-generation-intro p+p{margin-top:12px}
