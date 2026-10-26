@@ -98,7 +98,7 @@ async function playBoth() {
   if (request !== playRequest) return;
   if (results.every((r) => r.status === 'rejected')) {
     pauseBoth();
-    $('#case-description').textContent = 'Playback could not start. Use the individual video controls to play each original clip.';
+    showPlayerError('Playback could not start. Try replaying or choose another example.');
     return;
   }
   animation = requestAnimationFrame(tick);
@@ -110,10 +110,11 @@ timeline.addEventListener('input', () => { seeking = true; seekBoth(Number(timel
 timeline.addEventListener('change', () => { seeking = false; updateTransport(); });
 document.querySelectorAll('[data-audio]').forEach((button) => button.addEventListener('click', () => { audio = button.dataset.audio; applyAudio(); }));
 players.forEach((video) => {
+  video.addEventListener('click', playBoth);
   video.addEventListener('loadedmetadata', updateTransport);
   video.addEventListener('timeupdate', () => { if (!playing) updateTransport(); });
   video.addEventListener('pause', () => { if (playing && !video.ended && !video.seeking) pauseBoth(); });
-  video.addEventListener('error', () => { if (video.currentSrc) $('#case-description').textContent = 'This original clip could not be loaded. Try the other side or choose another example.'; });
+  video.addEventListener('error', () => { if (video.currentSrc) showPlayerError('This clip could not be loaded. Try the original render or choose another example.'); });
 });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { pauseBoth(); featureVideo.pause(); }
@@ -132,7 +133,6 @@ function setFeature(index) {
     featureVideo.load();
   }
   $('#feature-open').setAttribute('aria-label', `Compare ${example.title} edits`);
-  $('#feature-model').textContent = example.model;
   document.querySelectorAll('[data-feature]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.feature) === index)));
   if (!featurePaused && featureVisible && !document.hidden && !comparisonDialog.open) featureVideo.play().catch(() => {});
 }
@@ -152,7 +152,6 @@ $('#feature-pause').addEventListener('click', () => {
 });
 featureVideo.addEventListener('play', updateFeatureControl);
 featureVideo.addEventListener('pause', updateFeatureControl);
-$('.feature-compare').addEventListener('click', event => openComparison(examples[featureIndex], event.currentTarget));
 $('#feature-open').addEventListener('click', event => openComparison(examples[featureIndex], event.currentTarget));
 if (reduceMotion) { featureVideo.autoplay = false; featureVideo.pause(); }
 
@@ -184,22 +183,18 @@ comparisonDialog.addEventListener('close', () => {
   if (resumeFeature && featureVisible && !featurePaused && !document.hidden) featureVideo.play().catch(() => {});
 });
 
-function scoreLabel(side) {
-  return side.invalid ? 'Submission validation failed' : `Individual score ${side.score.toFixed(3)}`;
+function showPlayerError(message) {
+  const status = $('#player-status');
+  status.textContent = message;
+  status.hidden = false;
 }
 
 function chooseExample(example) {
   pauseBoth();
   active = example;
   $('#case-title').textContent = example.model;
-  $('#case-position').textContent = `${example.number} / ${String(examples.length).padStart(2, '0')}`;
-  $('#case-focus').textContent = example.focus;
-  $('#case-description').textContent = example.observed;
-  $('#case-caveat').textContent = example.caveat;
-  $('#case-provenance').textContent = `${example.title} · ${example.method} · ${example.task} · evaluation repetition ${example.rep}. A selected individual rollout, not an average training effect.`;
-  $('.case-notes').open = false;
-  $('#before-score').textContent = scoreLabel(example.before);
-  $('#after-score').textContent = scoreLabel(example.after);
+  $('#player-status').hidden = true;
+  $('#player-status').textContent = '';
   for (const [index, video] of players.entries()) {
     const side = example[index ? 'after' : 'before'];
     const media = displayMedia(side);
@@ -217,9 +212,6 @@ document.querySelectorAll('[data-resolution]').forEach(button => button.addEvent
   if (resolution === button.dataset.resolution) return;
   resolution = button.dataset.resolution;
   document.querySelectorAll('[data-resolution]').forEach(option => option.setAttribute('aria-pressed', String(option.dataset.resolution === resolution)));
-  $('#render-note').textContent = resolution === 'hd'
-    ? 'HD reconstructions preserve the original frame timing and audio. Scores refer to the original evaluation renders.'
-    : 'Exact 480p evaluation renders, with the original video and audio files.';
   setFeature(featureIndex);
   renderRail();
   chooseExample(active);
@@ -263,13 +255,11 @@ function renderRail() {
     tile.addEventListener('pointerleave', previewStop);
     tile.addEventListener('focus', previewStart);
     tile.addEventListener('blur', previewStop);
-    const title = document.createElement('span');
-    title.className = 'tile-title';
-    title.textContent = example.model;
     const prompt = document.createElement('span');
     prompt.className = 'tile-open';
+    prompt.setAttribute('aria-hidden', 'true');
     prompt.append(icon('play'));
-    tile.append(poster, preview, title, prompt);
+    tile.append(poster, preview, prompt);
     tile.addEventListener('click', () => {
       previewStop();
       openComparison(example, tile);

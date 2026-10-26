@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-400.ttf" crossorigin>
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-600.ttf" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
-  <script type="module" src="assets/site.js?v=20261026-modal"></script>
+  <script type="module" src="assets/site.js?v=20261026-cinema"></script>
 </head>
 <body>
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -51,17 +51,21 @@
 
     <section class="hero-media section-shell" aria-label="Featured editing outputs">
       <div class="feature-stage">
-        <div class="feature-toolbar">
-        <div class="feature-tabs" role="group" aria-label="Choose a featured film"><button type="button" data-feature="6" aria-pressed="true">Deadpool &amp; Wolverine</button><button type="button" data-feature="3" aria-pressed="false">Whiplash</button><button type="button" data-feature="7" aria-pressed="false">Sinners</button><button type="button" data-feature="5" aria-pressed="false">The Drama</button></div>
-        <button type="button" class="feature-pause" id="feature-pause" aria-label="Pause featured preview"><svg class="icon"><use href="#i-pause"/></svg></button>
-        </div>
         <button type="button" class="feature-open" id="feature-open" aria-haspopup="dialog" aria-controls="comparison-dialog" aria-label="Compare Deadpool and Wolverine edits">
           <video id="feature-video" autoplay muted loop playsinline preload="metadata" poster="assets/media/example-07-after-hd.jpg" src="assets/media/example-07-after-hd.mp4" aria-hidden="true" tabindex="-1"></video>
-          <span class="feature-open-prompt"><svg class="icon"><use href="#i-play"/></svg> Compare edits</span>
+          <span class="feature-open-prompt" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
         </button>
-        <div class="feature-caption"><span class="feature-model" id="feature-model">Qwen3.6-35B-A3B</span><button type="button" class="feature-compare" aria-haspopup="dialog" aria-controls="comparison-dialog">Compare edits <svg class="icon small"><use href="#i-arrow"/></svg></button></div>
+        <div class="feature-toolbar">
+          <div class="feature-tabs" role="group" aria-label="Choose a featured film">
+            <button type="button" data-feature="6" aria-pressed="true" aria-label="Deadpool and Wolverine"></button>
+            <button type="button" data-feature="3" aria-pressed="false" aria-label="Whiplash"></button>
+            <button type="button" data-feature="7" aria-pressed="false" aria-label="Sinners"></button>
+            <button type="button" data-feature="5" aria-pressed="false" aria-label="The Drama"></button>
+          </div>
+          <button type="button" class="feature-pause" id="feature-pause" aria-label="Pause featured preview"><svg class="icon"><use href="#i-pause"/></svg></button>
+        </div>
       </div>
-      <p class="feature-description"><strong>Teaching AI to edit video with 49 real films.</strong> Click a video to compare the untrained and RL-trained edits. Previews are muted; sound is available in the comparison viewer.</p>
+      <p class="feature-description"><strong>Teaching AI to edit video with 49 real films.</strong> Click a preview to compare the edits.</p>
       <div class="hero-stats"><div><strong>49</strong><span>real films</span><small>Movies and their matching trailers</small></div><div><strong>4</strong><span>editing task types</span><small>Selection · sequencing · rough cut · fine cut</small></div><div><strong>797</strong><span>retained training &amp; validation tasks</span><small>716 training · 81 validation</small></div><div><strong>2</strong><span>model sizes</span><small>Qwen3.5-9B · Qwen3.6-35B-A3B</small></div></div>
     </section>
 
@@ -106,19 +110,25 @@
 }</code></pre><p id="copy-status" role="status" aria-live="polite"></p></div></section>
   </main>
   <dialog class="comparison-dialog" id="comparison-dialog" aria-labelledby="case-title" aria-describedby="dialog-description">
-    <div class="dialog-header"><h2 id="case-title">Qwen3.6-35B-A3B</h2><div><span class="case-position" id="case-position">01 / 08</span><button type="button" class="dialog-close" id="close-comparison" aria-label="Close comparison" autofocus><svg class="icon" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div></div>
-    <p class="sr-only" id="dialog-description">Compare the untrained and RL-trained models on the same editing task. Play both videos together and choose which side to hear.</p>
-    <div class="dialog-body">
-      <div class="comparison" aria-label="Before and after video comparison">
-        <div class="render-options"><div class="resolution-switch" role="group" aria-label="Video resolution"><button type="button" data-resolution="hd" aria-pressed="true">1080p reconstruction</button><button type="button" data-resolution="original" aria-pressed="false">Original 480p</button></div><p id="render-note">HD reconstructions preserve the original frame timing and audio. Scores refer to the original evaluation renders.</p></div>
-        <div class="video-grid">
-          <div class="video-panel"><div class="video-label"><span><span class="label-dot base-dot"></span>Untrained</span><span id="before-score">Individual score 0.448</span></div><video id="video-before" controls playsinline preload="none" aria-label="Before model output"></video></div>
-          <div class="video-panel"><div class="video-label"><span><span class="label-dot trained-dot"></span>After RL</span><span id="after-score">Individual score 0.783</span></div><video id="video-after" controls playsinline preload="none" aria-label="After model output"></video></div>
-        </div>
-        <div class="transport"><div class="playback-buttons"><button class="play-both" id="play-both" type="button"><svg class="icon"><use href="#i-play"/></svg><span>Play both</span></button><button class="icon-button" id="replay" type="button" aria-label="Replay both videos"><svg class="icon"><use href="#i-reset"/></svg></button></div><label class="seek-label"><span class="sr-only">Seek both videos</span><input id="timeline" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek both videos"></label><span class="time-display" id="playback-time">0:00 / 0:07</span><div class="audio-switch" role="group" aria-label="Choose which video's audio to hear"><svg class="icon"><use href="#i-volume"/></svg><button type="button" data-audio="before" aria-pressed="false">Untrained</button><button type="button" data-audio="after" aria-pressed="true">After RL</button><button type="button" data-audio="mute" aria-pressed="false">Mute</button></div></div>
+    <div class="dialog-header">
+      <h2 id="case-title">Qwen3.6-35B-A3B</h2>
+      <div class="dialog-actions">
+        <div class="resolution-switch" role="group" aria-label="Video resolution"><button type="button" data-resolution="hd" aria-pressed="true">HD reconstruction</button><button type="button" data-resolution="original" aria-pressed="false">Original</button></div>
+        <button type="button" class="dialog-close" id="close-comparison" aria-label="Close comparison" autofocus><svg class="icon" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
       </div>
-      <div class="case-caption"><div><h3 id="case-focus">Clearer speech and stronger musical hits</h3><p id="case-description">Compare the spoken line and the music entry before the storm shot. Both recorded judges favor the trained dialogue and music.</p></div><details class="case-notes"><summary>Case notes &amp; limitations <span>+</span></summary><p id="case-caveat"></p><p class="case-provenance" id="case-provenance"></p></details></div>
-      <p class="showcase-note">Selected individual rollouts on the same task and evaluation repetition. Scores are not task averages. Notes summarize recorded grader assessments; examples can retain editing defects. The 1080p reconstructions use HD source footage and the model's own title-card designs. Six brief transition frames in the first untrained example retain their original pixels. Choose Original 480p to view the exact scored files.</p>
+    </div>
+    <p class="sr-only" id="dialog-description">Compare the untrained and RL-trained models on the same editing task. HD reconstructions preserve original frame timing and audio. Original opens the exact evaluated files.</p>
+    <div class="comparison" aria-label="Before and after video comparison">
+      <div class="video-grid">
+        <div class="video-panel"><div class="video-label">Before RL</div><video id="video-before" playsinline preload="none" aria-label="Before model output"></video></div>
+        <div class="video-panel"><div class="video-label">After RL</div><video id="video-after" playsinline preload="none" aria-label="After model output"></video></div>
+      </div>
+      <div class="transport">
+        <div class="playback-buttons"><button class="play-both" id="play-both" type="button"><svg class="icon"><use href="#i-play"/></svg><span>Play both</span></button><button class="icon-button" id="replay" type="button" aria-label="Replay both videos"><svg class="icon"><use href="#i-reset"/></svg></button></div>
+        <label class="seek-label"><span class="sr-only">Seek both videos</span><input id="timeline" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek both videos"></label><span class="time-display" id="playback-time">0:00 / 0:07</span>
+        <div class="audio-switch" role="group" aria-label="Choose which video's audio to hear"><svg class="icon"><use href="#i-volume"/></svg><button type="button" data-audio="before" aria-pressed="false">Before</button><button type="button" data-audio="after" aria-pressed="true">After</button><button type="button" data-audio="mute" aria-pressed="false">Mute</button></div>
+      </div>
+      <p class="player-status" id="player-status" role="status" hidden></p>
     </div>
   </dialog>
   <footer class="site-footer"><div class="section-shell"><div><a class="brand" href="#top">VideoEdit<span class="brand-dot">.</span></a><p>Learning when finer feedback helps—and when it hurts.</p></div><div><span>University of Pennsylvania · Philo Labs</span><a href="mailto:leizhao7@upenn.edu">Contact <svg class="icon small"><use href="#i-arrow"/></svg></a></div></div></footer>
