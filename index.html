@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-400.ttf" crossorigin>
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-600.ttf" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
-  <script type="module" src="assets/site.js"></script>
+  <script type="module" src="assets/site.js?v=20261026"></script>
 </head>
 <body>
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -51,9 +51,11 @@
 
     <section class="hero-media section-shell" aria-label="Featured editing outputs">
       <div class="feature-stage">
-        <video id="feature-video" autoplay muted loop playsinline preload="metadata" poster="assets/media/example-07-after.jpg" src="assets/media/example-07-after.mp4" aria-label="Muted preview of an RL-trained Fine Cut output from Deadpool and Wolverine"></video>
+        <div class="feature-toolbar">
         <div class="feature-tabs" role="group" aria-label="Choose a featured film"><button type="button" data-feature="6" aria-pressed="true">Deadpool &amp; Wolverine</button><button type="button" data-feature="3" aria-pressed="false">Whiplash</button><button type="button" data-feature="7" aria-pressed="false">Sinners</button><button type="button" data-feature="5" aria-pressed="false">The Drama</button></div>
         <button type="button" class="feature-pause" id="feature-pause" aria-label="Pause featured preview"><svg class="icon"><use href="#i-pause"/></svg></button>
+        </div>
+        <video id="feature-video" autoplay muted loop playsinline preload="metadata" poster="assets/media/example-07-after.jpg" src="assets/media/example-07-after.mp4" aria-label="Muted preview of an RL-trained Fine Cut output from Deadpool and Wolverine"></video>
         <div class="feature-caption"><div><span id="feature-method">Qwen3.6-35B-A3B · GRPO+PRM (fixed λ = 0.5)</span><h2 id="feature-title">Deadpool &amp; Wolverine</h2><p>Fine Cut · dialogue, music, and audiovisual transitions</p></div><a class="feature-compare" href="#showcase">Compare before &amp; after <svg class="icon small"><use href="#i-arrow"/></svg></a></div>
       </div>
       <p class="feature-description"><strong>Teaching AI to edit video with 49 real films.</strong> Explore selected outputs from our editing agents, then compare the original untrained and RL-trained edits below. Previews are muted; use the comparison player to listen.</p>
@@ -73,7 +75,7 @@
       <div class="case-caption"><div><h3 id="case-focus">Clearer speech and stronger musical hits</h3><p id="case-description">Compare the spoken line and the music entry before the storm shot. Both recorded judges favor the trained dialogue and music.</p></div><details class="case-notes"><summary>Case notes &amp; limitations <span>+</span></summary><p id="case-caveat"></p><p class="case-provenance" id="case-provenance"></p></details></div>
       <div class="example-toolbar" id="gallery"><span>Selected comparisons <span class="subtle" id="example-count">/ 8 selected pairs</span></span><div class="model-filter" role="group" aria-label="Filter examples by model size"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="9B" aria-pressed="false">9B</button><button type="button" data-filter="35B" aria-pressed="false">35B</button></div></div>
       <div class="example-rail" id="example-rail" aria-label="Choose a video comparison"></div>
-      <p class="showcase-note">Selected individual rollouts on the same task and evaluation repetition. Scores are not task averages. Notes summarize recorded grader assessments; examples can retain editing defects. Full, original audio and video are preserved.</p>
+      <p class="showcase-note">Selected individual rollouts on the same task and evaluation repetition. Scores are not task averages. Notes summarize recorded grader assessments; examples can retain editing defects. Videos are the original 854 × 480 evaluation renders, with their full picture and audio preserved.</p>
     </section>
 
     <section class="film-section" aria-label="Films used in the study"><div class="section-shell"><div class="film-section-top"><span class="eyebrow">REAL FILMS. REAL EDITING DECISIONS.</span><span>49 films <span class="subtle">·</span> 4 task types <span class="subtle">·</span> Film-disjoint evaluation</span></div><img class="film-wall" src="assets/film-poster-collage.png" alt="A collage of posters from the 49 real films used to construct editing tasks." width="2400" height="697" loading="lazy"><a class="poster-credit" href="POSTER_CREDITS.md">Film and poster credits ↗</a></div></section>

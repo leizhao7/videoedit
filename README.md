@@ -27,6 +27,8 @@ The workflow in `.github/workflows/pages.yml` deploys the static files when `mai
 
 The showcase videos are byte-identical to the selected recorded model outputs, including their original audio. They are selected individual rollouts, not unbiased estimates of average training effects. One base submission failed validation; the website explicitly labels it rather than presenting zero as a perceptual-quality score. Some comparisons show rendering completion or remaining defects; their notes retain these qualifications.
 
+The recorded videos are 854 × 480. The featured player is capped at that width, preserves the full source aspect ratio, and places captions and controls outside the picture. The website does not re-encode, sharpen or upscale the experiment outputs. A genuinely higher-resolution version requires a separately identified render from higher-resolution source footage.
+
 Site-authored HTML, CSS and JavaScript are MIT licensed. The film posters and video excerpts remain subject to their respective rights; they are not covered by the website code license. Poster credits are in [POSTER_CREDITS.md](POSTER_CREDITS.md).
 
 The visual layout follows the requested research-project reference: a white canvas, a blue–purple project title, Geist typography, a large featured visual, numbered sections and a media-led showcase grid. The site uses its own content, artwork and video outputs. Geist is bundled locally under the SIL Open Font License; see [assets/fonts/OFL.txt](assets/fonts/OFL.txt).

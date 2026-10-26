@@ -117,6 +117,7 @@ document.addEventListener('visibilitychange', () => {
 function setFeature(index) {
   featureIndex = index;
   const example = examples[index];
+  featureVideo.autoplay = !featurePaused && featureVisible && !document.hidden;
   featureVideo.pause();
   featureVideo.poster = example.after.poster;
   if (featureVideo.getAttribute('src') !== example.after.video) {
