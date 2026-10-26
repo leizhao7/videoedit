@@ -7,6 +7,11 @@ const players = [before, after];
 const playButton = $('#play-both');
 const timeline = $('#timeline');
 const timeDisplay = $('#playback-time');
+const featureVideo = $('#feature-video');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let featureIndex = 6;
+let featurePaused = reduceMotion;
+let featureVisible = true;
 let active = examples[0];
 let audio = 'after';
 let playing = false;
@@ -77,6 +82,7 @@ function tick() {
 
 async function playBoth() {
   if (playing) { pauseBoth(); return; }
+  featureVideo.pause();
   if (currentTime() >= duration() - .1) seekBoth(0);
   applyAudio();
   const request = ++playRequest;
@@ -103,7 +109,44 @@ players.forEach((video) => {
   video.addEventListener('pause', () => { if (playing && !video.ended && !video.seeking) pauseBoth(); });
   video.addEventListener('error', () => { if (video.currentSrc) $('#case-description').textContent = 'This original clip could not be loaded. Try the other side or choose another example.'; });
 });
-document.addEventListener('visibilitychange', () => { if (document.hidden) pauseBoth(); });
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { pauseBoth(); featureVideo.pause(); }
+  else if (featureVisible && !featurePaused) featureVideo.play().catch(() => {});
+});
+
+function setFeature(index) {
+  featureIndex = index;
+  const example = examples[index];
+  featureVideo.pause();
+  featureVideo.poster = example.after.poster;
+  if (featureVideo.getAttribute('src') !== example.after.video) {
+    featureVideo.src = example.after.video;
+    featureVideo.load();
+  }
+  featureVideo.setAttribute('aria-label', `Muted preview: ${example.title}, ${example.model}, ${example.method}`);
+  $('#feature-title').textContent = example.title;
+  $('#feature-method').textContent = `${example.model} · ${example.method}`;
+  document.querySelectorAll('[data-feature]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.feature) === index)));
+  if (!featurePaused && featureVisible && !document.hidden) featureVideo.play().catch(() => {});
+}
+
+function updateFeatureControl() {
+  const paused = featureVideo.paused;
+  const button = $('#feature-pause');
+  button.setAttribute('aria-label', paused ? 'Play featured preview' : 'Pause featured preview');
+  button.replaceChildren(icon(paused ? 'play' : 'pause'));
+}
+
+document.querySelectorAll('[data-feature]').forEach(button => button.addEventListener('click', () => setFeature(Number(button.dataset.feature))));
+$('#feature-pause').addEventListener('click', () => {
+  featurePaused = !featureVideo.paused;
+  if (featurePaused) featureVideo.pause();
+  else featureVideo.play().catch(() => {});
+});
+featureVideo.addEventListener('play', updateFeatureControl);
+featureVideo.addEventListener('pause', updateFeatureControl);
+$('.feature-compare').addEventListener('click', () => { featureVideo.pause(); chooseExample(examples[featureIndex]); });
+if (reduceMotion) { featureVideo.autoplay = false; featureVideo.pause(); }
 
 function scoreLabel(side) {
   return side.invalid ? 'Submission validation failed' : `Individual score ${side.score.toFixed(3)}`;
@@ -137,7 +180,9 @@ function chooseExample(example) {
 
 function renderRail() {
   const rail = $('#example-rail');
+  rail.querySelectorAll('video').forEach(video => video.pause());
   rail.replaceChildren();
+  rail.classList.toggle('filtered', filter !== 'all');
   for (const example of examples) {
     const tile = document.createElement('button');
     tile.className = 'example-tile';
@@ -150,20 +195,42 @@ function renderRail() {
     poster.src = example.after.poster;
     poster.alt = '';
     poster.loading = 'lazy';
-    poster.width = 180;
-    poster.height = 101;
+    poster.width = 604;
+    poster.height = 340;
+    const preview = document.createElement('video');
+    preview.className = 'tile-preview';
+    preview.muted = true;
+    preview.loop = true;
+    preview.playsInline = true;
+    preview.preload = 'none';
+    preview.setAttribute('aria-hidden', 'true');
+    preview.tabIndex = -1;
+    const previewStart = () => {
+      if (reduceMotion || !window.matchMedia('(hover: hover)').matches) return;
+      if (!preview.getAttribute('src')) preview.src = example.after.video;
+      preview.play().then(() => tile.classList.add('is-previewing')).catch(() => {});
+    };
+    const previewStop = () => { preview.pause(); tile.classList.remove('is-previewing'); };
+    tile.addEventListener('pointerenter', previewStart);
+    tile.addEventListener('pointerleave', previewStop);
+    tile.addEventListener('focus', previewStart);
+    tile.addEventListener('blur', previewStop);
     const title = document.createElement('span');
     title.className = 'tile-title';
     title.textContent = example.title;
     const meta = document.createElement('span');
     meta.className = 'tile-meta';
     const size = document.createElement('span');
-    size.textContent = example.size;
+    size.textContent = `${example.size} · ${example.method.includes('PRM') ? 'GRPO + PRM' : 'GRPO'}`;
     const number = document.createElement('span');
     number.textContent = example.number;
     meta.append(size, number);
-    tile.append(poster, title, meta);
-    tile.addEventListener('click', () => chooseExample(example));
+    tile.append(poster, preview, title, meta);
+    tile.addEventListener('click', () => {
+      previewStop();
+      chooseExample(example);
+      $('.comparison').scrollIntoView({behavior:reduceMotion ? 'auto' : 'smooth',block:'start'});
+    });
     rail.append(tile);
   }
 }
@@ -260,8 +327,15 @@ if ('IntersectionObserver' in window) {
     }
   }, {rootMargin:'-20% 0px -60% 0px'});
   document.querySelectorAll('main section[id]').forEach((section) => observer.observe(section));
+  const featureObserver = new IntersectionObserver(entries => {
+    featureVisible = entries[0].isIntersecting;
+    if (!featureVisible) featureVideo.pause();
+    else if (!featurePaused && !document.hidden) featureVideo.play().catch(() => {});
+  }, {threshold:.15});
+  featureObserver.observe(featureVideo);
 }
 
 renderRail();
 chooseExample(active);
 setTask('CS');
+setFeature(featureIndex);

@@ -22,9 +22,11 @@ The workflow in `.github/workflows/pages.yml` deploys the static files when `mai
 
 - `index.html`: paper information, section text, model links and software citation. The paper link is marked forthcoming until a verified URL is available.
 - `assets/examples.js`: the eight selected same-task, same-repetition comparisons, their original clips, individual scores and qualified recorded observations.
-- `assets/site.js`: synchronized playback, audio-side selection, example filtering and keyboard-accessible task tabs.
+- `assets/site.js`: the muted featured-film preview, synchronized comparison playback, audio-side selection, model filtering, hover previews and keyboard-accessible task tabs.
 - `assets/style.css`: responsive layout, typography and colors.
 
 The showcase videos are byte-identical to the selected recorded model outputs, including their original audio. They are selected individual rollouts, not unbiased estimates of average training effects. One base submission failed validation; the website explicitly labels it rather than presenting zero as a perceptual-quality score. Some comparisons show rendering completion or remaining defects; their notes retain these qualifications.
 
 Site-authored HTML, CSS and JavaScript are MIT licensed. The film posters and video excerpts remain subject to their respective rights; they are not covered by the website code license. Poster credits are in [POSTER_CREDITS.md](POSTER_CREDITS.md).
+
+The visual layout follows the requested research-project reference: a white canvas, a blue–purple project title, Geist typography, a large featured visual, numbered sections and a media-led showcase grid. The site uses its own content, artwork and video outputs. Geist is bundled locally under the SIL Open Font License; see [assets/fonts/OFL.txt](assets/fonts/OFL.txt).
