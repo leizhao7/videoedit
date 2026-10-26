@@ -8,6 +8,7 @@ const playButton = $('#play-both');
 const timeline = $('#timeline');
 const timeDisplay = $('#playback-time');
 const featureVideo = $('#feature-video');
+const comparisonDialog = $('#comparison-dialog');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let featureIndex = 6;
 let featurePaused = reduceMotion;
@@ -20,6 +21,8 @@ let animation = 0;
 let seeking = false;
 let filter = 'all';
 let resolution = 'hd';
+let comparisonOpener = null;
+let resumeFeature = false;
 
 function displayMedia(side) { return resolution === 'hd' && side.hd ? side.hd : side; }
 
@@ -114,26 +117,24 @@ players.forEach((video) => {
 });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { pauseBoth(); featureVideo.pause(); }
-  else if (featureVisible && !featurePaused) featureVideo.play().catch(() => {});
+  else if (featureVisible && !featurePaused && !comparisonDialog.open) featureVideo.play().catch(() => {});
 });
 
 function setFeature(index) {
   featureIndex = index;
   const example = examples[index];
   const media = displayMedia(example.after);
-  featureVideo.autoplay = !featurePaused && featureVisible && !document.hidden;
+  featureVideo.autoplay = !featurePaused && featureVisible && !document.hidden && !comparisonDialog.open;
   featureVideo.pause();
   featureVideo.poster = media.poster;
   if (featureVideo.getAttribute('src') !== media.video) {
     featureVideo.src = media.video;
     featureVideo.load();
   }
-  featureVideo.setAttribute('aria-label', `Muted preview: ${example.title}, ${example.model}, ${example.method}`);
-  $('#feature-title').textContent = example.title;
-  $('#feature-method').textContent = `${example.model} · ${example.method}`;
-  $('#feature-quality').textContent = resolution === 'hd' ? '1080p reconstruction' : 'Original 480p render';
+  $('#feature-open').setAttribute('aria-label', `Compare ${example.title} edits`);
+  $('#feature-model').textContent = example.model;
   document.querySelectorAll('[data-feature]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.feature) === index)));
-  if (!featurePaused && featureVisible && !document.hidden) featureVideo.play().catch(() => {});
+  if (!featurePaused && featureVisible && !document.hidden && !comparisonDialog.open) featureVideo.play().catch(() => {});
 }
 
 function updateFeatureControl() {
@@ -151,8 +152,37 @@ $('#feature-pause').addEventListener('click', () => {
 });
 featureVideo.addEventListener('play', updateFeatureControl);
 featureVideo.addEventListener('pause', updateFeatureControl);
-$('.feature-compare').addEventListener('click', () => { featureVideo.pause(); chooseExample(examples[featureIndex]); });
+$('.feature-compare').addEventListener('click', event => openComparison(examples[featureIndex], event.currentTarget));
+$('#feature-open').addEventListener('click', event => openComparison(examples[featureIndex], event.currentTarget));
 if (reduceMotion) { featureVideo.autoplay = false; featureVideo.pause(); }
+
+function openComparison(example, opener) {
+  if (comparisonDialog.open) return;
+  comparisonOpener = opener;
+  resumeFeature = !featureVideo.paused;
+  featureVideo.pause();
+  document.querySelectorAll('.tile-preview').forEach(video => video.pause());
+  document.querySelectorAll('.is-previewing').forEach(tile => tile.classList.remove('is-previewing'));
+  chooseExample(example);
+  comparisonDialog.showModal();
+  document.body.classList.add('modal-open');
+}
+
+$('#close-comparison').addEventListener('click', () => comparisonDialog.close());
+comparisonDialog.addEventListener('click', event => {
+  if (event.target !== comparisonDialog) return;
+  const bounds = comparisonDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) comparisonDialog.close();
+});
+comparisonDialog.addEventListener('close', () => {
+  pauseBoth();
+  document.body.classList.remove('modal-open');
+  if (comparisonOpener && !comparisonOpener.isConnected) {
+    comparisonOpener = Array.from(document.querySelectorAll('.example-tile')).find(tile => tile.dataset.id === comparisonOpener.dataset.id) || $('#feature-open');
+  }
+  comparisonOpener?.focus({preventScroll:true});
+  if (resumeFeature && featureVisible && !featurePaused && !document.hidden) featureVideo.play().catch(() => {});
+});
 
 function scoreLabel(side) {
   return side.invalid ? 'Submission validation failed' : `Individual score ${side.score.toFixed(3)}`;
@@ -161,13 +191,12 @@ function scoreLabel(side) {
 function chooseExample(example) {
   pauseBoth();
   active = example;
-  $('#case-title').textContent = example.title;
-  $('#case-method').textContent = `${example.method} · ${example.size}`;
+  $('#case-title').textContent = example.model;
   $('#case-position').textContent = `${example.number} / ${String(examples.length).padStart(2, '0')}`;
   $('#case-focus').textContent = example.focus;
   $('#case-description').textContent = example.observed;
   $('#case-caveat').textContent = example.caveat;
-  $('#case-provenance').textContent = `${example.model} · ${example.task} · evaluation repetition ${example.rep}. A selected individual rollout, not an average training effect.`;
+  $('#case-provenance').textContent = `${example.title} · ${example.method} · ${example.task} · evaluation repetition ${example.rep}. A selected individual rollout, not an average training effect.`;
   $('.case-notes').open = false;
   $('#before-score').textContent = scoreLabel(example.before);
   $('#after-score').textContent = scoreLabel(example.after);
@@ -181,7 +210,6 @@ function chooseExample(example) {
   }
   applyAudio();
   timeline.value = '0';
-  document.querySelectorAll('.example-tile').forEach((tile) => tile.setAttribute('aria-pressed', String(tile.dataset.id === example.id)));
   updateTransport();
 }
 
@@ -208,8 +236,9 @@ function renderRail() {
     tile.type = 'button';
     tile.dataset.id = example.id;
     tile.hidden = filter !== 'all' && example.size !== filter;
-    tile.setAttribute('aria-pressed', String(example.id === active.id));
-    tile.setAttribute('aria-label', `${example.title}, ${example.size}, ${example.method}, repetition ${example.rep}`);
+    tile.setAttribute('aria-haspopup', 'dialog');
+    tile.setAttribute('aria-controls', 'comparison-dialog');
+    tile.setAttribute('aria-label', `Compare ${example.title}, ${example.model}, example ${example.number}`);
     const poster = document.createElement('img');
     poster.src = displayMedia(example.after).poster;
     poster.alt = '';
@@ -225,7 +254,7 @@ function renderRail() {
     preview.setAttribute('aria-hidden', 'true');
     preview.tabIndex = -1;
     const previewStart = () => {
-      if (reduceMotion || !window.matchMedia('(hover: hover)').matches) return;
+      if (comparisonDialog.open || reduceMotion || !window.matchMedia('(hover: hover)').matches) return;
       if (!preview.getAttribute('src')) preview.src = displayMedia(example.after).video;
       preview.play().then(() => tile.classList.add('is-previewing')).catch(() => {});
     };
@@ -236,19 +265,14 @@ function renderRail() {
     tile.addEventListener('blur', previewStop);
     const title = document.createElement('span');
     title.className = 'tile-title';
-    title.textContent = example.title;
-    const meta = document.createElement('span');
-    meta.className = 'tile-meta';
-    const size = document.createElement('span');
-    size.textContent = `${example.size} · ${example.method.includes('PRM') ? 'GRPO + PRM' : 'GRPO'}`;
-    const number = document.createElement('span');
-    number.textContent = example.number;
-    meta.append(size, number);
-    tile.append(poster, preview, title, meta);
+    title.textContent = example.model;
+    const prompt = document.createElement('span');
+    prompt.className = 'tile-open';
+    prompt.append(icon('play'));
+    tile.append(poster, preview, title, prompt);
     tile.addEventListener('click', () => {
       previewStop();
-      chooseExample(example);
-      $('.comparison').scrollIntoView({behavior:reduceMotion ? 'auto' : 'smooth',block:'start'});
+      openComparison(example, tile);
     });
     rail.append(tile);
   }
@@ -257,7 +281,7 @@ function renderRail() {
 document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
   filter = button.dataset.filter;
   document.querySelectorAll('[data-filter]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-  if (filter !== 'all' && active.size !== filter) chooseExample(examples.find((item) => item.size === filter));
+  if (filter !== 'all' && active.size !== filter) active = examples.find((item) => item.size === filter);
   renderRail();
   const count = examples.filter((item) => filter === 'all' || item.size === filter).length;
   $('#example-count').textContent = `/ ${count} selected pairs`;
@@ -349,12 +373,13 @@ if ('IntersectionObserver' in window) {
   const featureObserver = new IntersectionObserver(entries => {
     featureVisible = entries[0].isIntersecting;
     if (!featureVisible) featureVideo.pause();
-    else if (!featurePaused && !document.hidden) featureVideo.play().catch(() => {});
+    else if (!featurePaused && !document.hidden && !comparisonDialog.open) featureVideo.play().catch(() => {});
   }, {threshold:.15});
   featureObserver.observe(featureVideo);
 }
 
 renderRail();
-chooseExample(active);
+applyAudio();
+updateTransport();
 setTask('CS');
 setFeature(featureIndex);

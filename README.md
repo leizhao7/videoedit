@@ -22,7 +22,7 @@ The workflow in `.github/workflows/pages.yml` deploys the static files when `mai
 
 - `index.html`: paper information, section text, model links and software citation. The paper link is marked forthcoming until a verified URL is available.
 - `assets/examples.js`: the eight selected same-task, same-repetition comparisons, their original clips, individual scores and qualified recorded observations.
-- `assets/site.js`: the muted featured-film preview, synchronized comparison playback, audio-side selection, model filtering, hover previews and keyboard-accessible task tabs.
+- `assets/site.js`: muted preview cards, an on-demand comparison dialog with synchronized playback and audio-side selection, model filtering, hover previews and keyboard-accessible task tabs.
 - `assets/style.css`: responsive layout, typography and colors.
 
 The original 480p showcase videos are byte-identical to the selected recorded model outputs, including their original audio. They are selected individual rollouts, not unbiased estimates of average training effects. One base submission failed validation; the website explicitly labels it rather than presenting zero as a perceptual-quality score. Some comparisons show rendering completion or remaining defects; their notes retain these qualifications.
@@ -30,6 +30,8 @@ The original 480p showcase videos are byte-identical to the selected recorded mo
 The recorded videos are 854 × 480 and remain available through **Original 480p**. The default **1080p reconstruction** option uses frame-aligned HD source footage and recreates the model's own title-card designs from saved rendering recipes. Both sides retain their original frame presentation timestamps, duration, and audio packet payloads and timing. No new model rollout or grading is performed, and displayed scores belong to the original evaluation files. Six ambiguous transition frames in the first untrained example retain the original pixels; incomplete renders and editing defects are preserved. These presentation files are explicitly separate from the immutable scored artifacts.
 
 The featured player preserves the full source aspect ratio and places captions and controls outside the picture. Its width is capped at 854 CSS pixels so the 1920 × 1080 reconstruction remains crisp on a Retina display. HD provenance hashes, frame counts, and verification results are in [assets/hd-renders.json](assets/hd-renders.json).
+
+Preview cards display only the model name. Clicking the featured video, its **Compare edits** button, or a gallery card opens the paired viewer. The comparison dialog contains scores, resolution controls and case notes; close it with the close button, Escape or the backdrop. Closing pauses both comparison videos and returns focus to the selected preview.
 
 Site-authored HTML, CSS and JavaScript are MIT licensed. The film posters and video excerpts remain subject to their respective rights; they are not covered by the website code license. Poster credits are in [POSTER_CREDITS.md](POSTER_CREDITS.md).
 
