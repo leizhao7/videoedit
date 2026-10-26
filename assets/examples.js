@@ -42,17 +42,27 @@ export const examples = [
         "sha256": "1cc63fce5740390deea35b71dea1233e53260cf94fccf24f81b210005cd3c3d1",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 8,
+    "preview": {
+      "video": "assets/media/example-01-preview.mp4",
+      "poster": "assets/media/example-01-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 3.0,
+      "duration_seconds": 4.0
     }
   },
   {
     "id": "qwen35-9b-s_4e_deadpoolwolverine_c8-rep04-prm-decayed",
     "title": "Deadpool & Wolverine",
     "model": "Qwen3.5-9B",
-    "method": "GRPO+PRM (decayed \u03bb)",
+    "method": "GRPO+PRM (decayed λ)",
     "task": "s_4e_deadpoolwolverine_c8",
     "rep": 4,
     "focus": "From a silent render to an audible edit",
-    "observed": "The untrained output has no audio track. The trained output contains audio. The recorded blind judge rates music and transition execution 0/4 \u2192 4/4. Both judges still report dialogue masked by music in the trained clip.",
+    "observed": "The untrained output has no audio track. The trained output contains audio. The recorded blind judge rates music and transition execution 0/4 → 4/4. Both judges still report dialogue masked by music in the trained clip.",
     "caveat": "Same task and evaluation repetition. This inventory includes higher, lower and equal scores, as well as rejected submissions. It is not an estimate of average training effects.",
     "size": "9B",
     "number": "02",
@@ -87,6 +97,16 @@ export const examples = [
         "sha256": "f264ced18dcc6b5dbefd66b1b16d46f521a9dbfccec1a0e51cd2ceea1ecf1707",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 14,
+    "preview": {
+      "video": "assets/media/example-02-preview.mp4",
+      "poster": "assets/media/example-02-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 2.0,
+      "duration_seconds": 4.0
     }
   },
   {
@@ -132,13 +152,23 @@ export const examples = [
         "sha256": "99156cde44bf4c36146e37c7b2bd7043fff8f8dd212fe3c3a56db4a01ddc54d0",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 2,
+    "preview": {
+      "video": "assets/media/example-03-preview.mp4",
+      "poster": "assets/media/example-03-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 0.75,
+      "duration_seconds": 4.0
     }
   },
   {
     "id": "qwen35-9b-s_4e_whiplash_c13-rep01-prm-decayed",
     "title": "Whiplash",
     "model": "Qwen3.5-9B",
-    "method": "GRPO+PRM (decayed \u03bb)",
+    "method": "GRPO+PRM (decayed λ)",
     "task": "s_4e_whiplash_c13",
     "rep": 1,
     "focus": "The picture now runs through the montage",
@@ -177,13 +207,23 @@ export const examples = [
         "sha256": "0d93c94fb7e5b87fd0c1e3d3112bd05b510c16e3003d7d2a01c875bb398dc470",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 13,
+    "preview": {
+      "video": "assets/media/example-04-preview.mp4",
+      "poster": "assets/media/example-04-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 0.75,
+      "duration_seconds": 4.0
     }
   },
   {
     "id": "qwen35-9b-s_4e_sinners_c2-rep03-prm-decayed",
     "title": "Sinners",
     "model": "Qwen3.5-9B",
-    "method": "GRPO+PRM (decayed \u03bb)",
+    "method": "GRPO+PRM (decayed λ)",
     "task": "s_4e_sinners_c2",
     "rep": 3,
     "focus": "Valid submission with coherent voiceover bridges",
@@ -222,13 +262,23 @@ export const examples = [
         "sha256": "521c3931f23cf8469b91e096ad8a01daac30f7e69205d3f4aca2e1827cc77fd7",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 15,
+    "preview": {
+      "video": "assets/media/example-05-preview.mp4",
+      "poster": "assets/media/example-05-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 2.25,
+      "duration_seconds": 4.0
     }
   },
   {
     "id": "qwen36-35b-a3b-s_4e_thedrama_c11-rep04-prm-fixed",
     "title": "The Drama",
     "model": "Qwen3.6-35B-A3B",
-    "method": "GRPO+PRM (fixed \u03bb = 0.5)",
+    "method": "GRPO+PRM (fixed λ = 0.5)",
     "task": "s_4e_thedrama_c11",
     "rep": 4,
     "focus": "Narrative speech returns, with rough later cuts",
@@ -267,18 +317,28 @@ export const examples = [
         "sha256": "8e8d27629d1bf61d283175d941d8a6d1f2b09fe2f613fcdaddf75400597e79ed",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 1,
+    "preview": {
+      "video": "assets/media/example-06-preview.mp4",
+      "poster": "assets/media/example-06-preview.jpg",
+      "muted": true,
+      "width": 1280,
+      "height": 720,
+      "start_seconds": 5.25,
+      "duration_seconds": 4.0
     }
   },
   {
     "id": "qwen36-35b-a3b-s_4e_deadpoolwolverine_c7-rep01-prm-fixed",
     "title": "Deadpool & Wolverine",
     "model": "Qwen3.6-35B-A3B",
-    "method": "GRPO+PRM (fixed \u03bb = 0.5)",
+    "method": "GRPO+PRM (fixed λ = 0.5)",
     "task": "s_4e_deadpoolwolverine_c7",
     "rep": 1,
     "focus": "A clearer quip and a timed musical ending",
     "observed": "The recorded judges favor the trained quip over the action and the music timing near the final beat. The reference-conditioned judge still finds the pauses near 2.7 and 7.4 s disruptive.",
-    "caveat": "Blind music rises 1\u21924, but reference music remains 3 and dialogue remains 4. The reference bridge score is only 2/4: it criticizes the dips to black that the blind judge praises. Do not claim flawless pacing.",
+    "caveat": "Blind music rises 1→4, but reference music remains 3 and dialogue remains 4. The reference bridge score is only 2/4: it criticizes the dips to black that the blind judge praises. Do not claim flawless pacing.",
     "size": "35B",
     "number": "07",
     "before": {
@@ -312,17 +372,27 @@ export const examples = [
         "sha256": "c50f5b66449458aed4f1da7f6c0253b30959e1e9fa2ca6330d6af65947d69000",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 0,
+    "preview": {
+      "video": "assets/media/example-07-preview.mp4",
+      "poster": "assets/media/example-07-preview.jpg",
+      "muted": true,
+      "width": 1280,
+      "height": 720,
+      "start_seconds": 3.0,
+      "duration_seconds": 4.0
     }
   },
   {
     "id": "qwen36-35b-a3b-s_4e_sinners_c9-rep04-prm-fixed",
     "title": "Sinners",
     "model": "Qwen3.6-35B-A3B",
-    "method": "GRPO+PRM (fixed \u03bb = 0.5)",
+    "method": "GRPO+PRM (fixed λ = 0.5)",
     "task": "s_4e_sinners_c9",
     "rep": 4,
     "focus": "Sound continuity across cuts",
-    "observed": "Both outputs contain audio. The recorded blind judge rates transition execution 0/4 \u2192 4/4 and music 1/4 \u2192 3/4. Compare the cuts around 3\u20135 seconds and the closing dialogue. Dialogue is not fully resolved in the trained output.",
+    "observed": "Both outputs contain audio. The recorded blind judge rates transition execution 0/4 → 4/4 and music 1/4 → 3/4. Compare the cuts around 3–5 seconds and the closing dialogue. Dialogue is not fully resolved in the trained output.",
     "caveat": "Same task and evaluation repetition. This inventory includes higher, lower and equal scores, as well as rejected submissions. It is not an estimate of average training effects.",
     "size": "35B",
     "number": "08",
@@ -357,6 +427,484 @@ export const examples = [
         "sha256": "d93e3601c13022b77290b2c5fa847081df02cea2a57ddd4256cc6a594710bcd2",
         "original_pixel_frames": 0
       }
+    },
+    "galleryOrder": 4,
+    "preview": {
+      "video": "assets/media/example-08-preview.mp4",
+      "poster": "assets/media/example-08-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 3.25,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_sinners_c2-rep04-grpo",
+    "title": "Sinners",
+    "model": "Qwen3.5-9B",
+    "method": "Outcome-only GRPO",
+    "task": "s_4e_sinners_c2",
+    "rep": 4,
+    "focus": "Voiceover recovery, incomplete legend",
+    "observed": "The base file has no audio stream. In the GRPO output, the recorded judges hear a continuous voiceover across the montage, with dialogue ratings rising from 0/1 to 4/2.",
+    "caveat": "The reference judge says the crucial second half of the legend is omitted. Both music rubrics call music absent, although the reference continuity explanation contradictorily mentions a music bed. Hard audio cuts remain.",
+    "size": "9B",
+    "number": "09",
+    "before": {
+      "video": "assets/media/example-09-before.mp4",
+      "poster": "assets/media/example-09-before.jpg",
+      "score": 0.035,
+      "invalid": false,
+      "duration": 7.125,
+      "sha256": "a6393c9d492486a29c6c4d6ae26fe1511400a1c19ca873abc43e3d5ee416c349"
+    },
+    "after": {
+      "video": "assets/media/example-09-after.mp4",
+      "poster": "assets/media/example-09-after.jpg",
+      "score": 0.536,
+      "invalid": false,
+      "duration": 7.15,
+      "sha256": "358d18485335916f5462718fb6ebed4df8042a83454b4452aeb3190ce19fcc70"
+    },
+    "galleryOrder": 7,
+    "preview": {
+      "video": "assets/media/example-09-preview.mp4",
+      "poster": "assets/media/example-09-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 2.25,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_sinners_c8-rep02-prm-decayed",
+    "title": "Sinners",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (decayed λ)",
+    "task": "s_4e_sinners_c8",
+    "rep": 2,
+    "focus": "Music returns after a silent render",
+    "observed": "The base file has no audio stream. Both recorded music judges rate the trained output substantially higher, describing a strong entry that drives the later shots.",
+    "caveat": "The opening remains silent, dialogue is omitted, and a small unexplained black gap persists. Judges disagree on the entry's exact join and smoothness, so do not claim frame-accurate synchronization.",
+    "size": "9B",
+    "number": "10",
+    "before": {
+      "video": "assets/media/example-10-before.mp4",
+      "poster": "assets/media/example-10-before.jpg",
+      "score": 0.043,
+      "invalid": false,
+      "duration": 8.689697,
+      "sha256": "191c4b5745dbb7b34e0bf999941a5d3635c875121dada0f5ce48a7b6470e9ad0"
+    },
+    "after": {
+      "video": "assets/media/example-10-after.mp4",
+      "poster": "assets/media/example-10-after.jpg",
+      "score": 0.486,
+      "invalid": false,
+      "duration": 8.732,
+      "sha256": "155340109b7c318dd75849382b7ec3c49bbfcf88a68ad7dd65a4eb3dddc562d8"
+    },
+    "galleryOrder": 12,
+    "preview": {
+      "video": "assets/media/example-10-preview.mp4",
+      "poster": "assets/media/example-10-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 1.75,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_whiplash_c3-rep01-grpo",
+    "title": "Whiplash",
+    "model": "Qwen3.5-9B",
+    "method": "Outcome-only GRPO",
+    "task": "s_4e_whiplash_c3",
+    "rep": 1,
+    "focus": "Sound returns, but the line is still cut short",
+    "observed": "The base file has no audio stream. GRPO delivers speech and sound, but both recorded dialogue judges say the required line is truncated to “be great.”",
+    "caveat": "The added take is placed outside the rendered duration. Music appears as a jarring fragment, with abrupt silence and hard cuts. This is basic audiovisual recovery rather than a polished edit.",
+    "size": "9B",
+    "number": "11",
+    "before": {
+      "video": "assets/media/example-11-before.mp4",
+      "poster": "assets/media/example-11-before.jpg",
+      "score": 0.153,
+      "invalid": false,
+      "duration": 3.666667,
+      "sha256": "da43341d379a36c0aaf3d90480a7cbfd1eb80c192506dcf495f550db18ee1ea4"
+    },
+    "after": {
+      "video": "assets/media/example-11-after.mp4",
+      "poster": "assets/media/example-11-after.jpg",
+      "score": 0.428,
+      "invalid": false,
+      "duration": 3.708333,
+      "sha256": "01695257bcf73ca3880e3a35c4af6ab793bd8658ae1c28f04edba75125194589"
+    },
+    "galleryOrder": 6,
+    "preview": {
+      "video": "assets/media/example-11-preview.mp4",
+      "poster": "assets/media/example-11-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 0.0,
+      "duration_seconds": 3.708333
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_theywillkillyou_c11-rep03-prm-decayed",
+    "title": "They Will Kill You",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (decayed λ)",
+    "task": "s_4e_theywillkillyou_c11",
+    "rep": 3,
+    "focus": "Large blackouts removed, sound unfinished",
+    "observed": "The recorded render analysis finds several unexplained black intervals in the base output and none in the trained output, recovering parts of the montage.",
+    "caveat": "The trained output still omits the dialogue, cuts abruptly to silence around title cards, and introduces music only at the final shot. Its transition-execution rating falls from 1 to 0, so the gain is specifically a picture-rendering recovery.",
+    "size": "9B",
+    "number": "12",
+    "before": {
+      "video": "assets/media/example-12-before.mp4",
+      "poster": "assets/media/example-12-before.jpg",
+      "score": 0.112,
+      "invalid": false,
+      "duration": 12.396647,
+      "sha256": "ca5303ba8e9ba6d642cfcf99b356d54af1075fab814d27fe1517c032c4520eb5"
+    },
+    "after": {
+      "video": "assets/media/example-12-after.mp4",
+      "poster": "assets/media/example-12-after.jpg",
+      "score": 0.369,
+      "invalid": false,
+      "duration": 12.333333,
+      "sha256": "1a1e7a5ed4a1f4e83109117d97ad700416ceb225f8d55f66f439bae5a912710f"
+    },
+    "galleryOrder": 3,
+    "preview": {
+      "video": "assets/media/example-12-preview.mp4",
+      "poster": "assets/media/example-12-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 8.25,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_heretic_c6-rep02-prm-decayed",
+    "title": "Heretic",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (decayed λ)",
+    "task": "s_4e_heretic_c6",
+    "rep": 2,
+    "focus": "A dialogue fragment returns, with defects",
+    "observed": "Both recorded dialogue ratings rise from 0 to 2, but the trained output only delivers a mangled fragment of the required line.",
+    "caveat": "The phrase is cut mid-word near four seconds. Continuity ratings decline, and the same unexplained black interval remains after the title card. Do not present the gain as successful narrative delivery.",
+    "size": "9B",
+    "number": "13",
+    "before": {
+      "video": "assets/media/example-13-before.mp4",
+      "poster": "assets/media/example-13-before.jpg",
+      "score": 0.355,
+      "invalid": false,
+      "duration": 15.958333,
+      "sha256": "4b49773151d6afc29d1300acba3eeb514f212d45b63614dfb476185594763f01"
+    },
+    "after": {
+      "video": "assets/media/example-13-after.mp4",
+      "poster": "assets/media/example-13-after.jpg",
+      "score": 0.465,
+      "invalid": false,
+      "duration": 15.791667,
+      "sha256": "7efdb96f0b536a213eb7de6e46e552e6f9f6c9c33b5ad9ed4464179ceedbecf7"
+    },
+    "galleryOrder": 5,
+    "preview": {
+      "video": "assets/media/example-13-preview.mp4",
+      "poster": "assets/media/example-13-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 3.25,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_whiplash_c1-rep04-prm-decayed",
+    "title": "Whiplash",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (decayed λ)",
+    "task": "s_4e_whiplash_c1",
+    "rep": 4,
+    "focus": "Score gain with a new black gap",
+    "observed": "The trained output scores higher, but the recorded judges still find its intended dialogue inaudible and its sound transitions disruptive.",
+    "caveat": "The render analysis records a new 0.291-second unexplained black interval. The reference music score stays at 0, despite a higher blind music rating. This is a mixed outcome with a visible regression.",
+    "size": "9B",
+    "number": "14",
+    "before": {
+      "video": "assets/media/example-14-before.mp4",
+      "poster": "assets/media/example-14-before.jpg",
+      "score": 0.195,
+      "invalid": false,
+      "duration": 11.481039,
+      "sha256": "d00d186d9e3959214a7803d84cd8a6f731acc027f27f6a24cad4a5eda5a263b5"
+    },
+    "after": {
+      "video": "assets/media/example-14-after.mp4",
+      "poster": "assets/media/example-14-after.jpg",
+      "score": 0.334,
+      "invalid": false,
+      "duration": 11.625,
+      "sha256": "5f51596623e2d7c0d5c416faef0314716fb406d80de6a7ed3ea16b18675cb640"
+    },
+    "galleryOrder": 10,
+    "preview": {
+      "video": "assets/media/example-14-preview.mp4",
+      "poster": "assets/media/example-14-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 2.5,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_sinners_c3-rep01-prm-decayed",
+    "title": "Sinners",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (decayed λ)",
+    "task": "s_4e_sinners_c3",
+    "rep": 1,
+    "focus": "Cleaner rendering, missing narrative audio",
+    "observed": "The trained output removes the base black interruption and receives a higher transition-execution rating, but it still delivers no intelligible dialogue.",
+    "caveat": "Both continuity ratings fall to 0. The judges say musical hits ignore the picture timing, and disagree about whether the track is music or unrelated effects. Present as a rendering gain with substantial failures.",
+    "size": "9B",
+    "number": "15",
+    "before": {
+      "video": "assets/media/example-15-before.mp4",
+      "poster": "assets/media/example-15-before.jpg",
+      "score": 0.146,
+      "invalid": false,
+      "duration": 19.125,
+      "sha256": "5e2f182d2315e1e8276898b056d26ee98b80b46c04fa6385cad4cd03551e7057"
+    },
+    "after": {
+      "video": "assets/media/example-15-after.mp4",
+      "poster": "assets/media/example-15-after.jpg",
+      "score": 0.252,
+      "invalid": false,
+      "duration": 18.875,
+      "sha256": "44eefdbd13d626800f32f99ec1608c22a4cb59de9c9ea166876689cc9d7472c1"
+    },
+    "galleryOrder": 9,
+    "preview": {
+      "video": "assets/media/example-15-preview.mp4",
+      "poster": "assets/media/example-15-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 12.75,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_theywillkillyou_c5-rep01-grpo",
+    "title": "They Will Kill You",
+    "model": "Qwen3.5-9B",
+    "method": "Outcome-only GRPO",
+    "task": "s_4e_theywillkillyou_c5",
+    "rep": 1,
+    "focus": "Audio rendering returns, mix remains incomplete",
+    "observed": "The base file has no audio stream. GRPO renders audio, but the recorded judges still find its declared dialogue and music absent.",
+    "caveat": "The trained output contains abrupt dropouts and a new small unexplained black gap. This is audio-stream recovery only, not successful mixing or narrative delivery.",
+    "size": "9B",
+    "number": "16",
+    "before": {
+      "video": "assets/media/example-16-before.mp4",
+      "poster": "assets/media/example-16-before.jpg",
+      "score": 0.043,
+      "invalid": false,
+      "duration": 16.666667,
+      "sha256": "fce15d35b2dcf5d1d3e1fae063383cef76c41fa5524fbbf0617f5bd958d81532"
+    },
+    "after": {
+      "video": "assets/media/example-16-after.mp4",
+      "poster": "assets/media/example-16-after.jpg",
+      "score": 0.235,
+      "invalid": false,
+      "duration": 16.976333,
+      "sha256": "f2ef19fe135dd81a949f89ca60ec1a9d08680fc9a375ef22c6743c9043e64ee1"
+    },
+    "galleryOrder": 11,
+    "preview": {
+      "video": "assets/media/example-16-preview.mp4",
+      "poster": "assets/media/example-16-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 3.5,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_deadpoolwolverine_c6-rep01-prm-decayed",
+    "title": "Deadpool & Wolverine",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (decayed λ)",
+    "task": "s_4e_deadpoolwolverine_c6",
+    "rep": 1,
+    "focus": "Uncurated comparison · all available outputs",
+    "observed": "This pair is included in the complete inventory and has no curated qualitative caption. Validation failed for at least one submission; a validation zero is not a perceptual video-quality score.",
+    "caveat": "Same task and evaluation repetition. This inventory includes higher, lower and equal scores, as well as rejected submissions. It is not an estimate of average training effects.",
+    "size": "9B",
+    "number": "17",
+    "before": {
+      "video": "assets/media/example-17-before.mp4",
+      "poster": "assets/media/example-17-before.jpg",
+      "score": 0.0,
+      "invalid": true,
+      "duration": 25.52,
+      "sha256": "eb84d80a2aeb1c916ed986e11d4a4ef448160cc8358f0187c96ebfd98f7d3048"
+    },
+    "after": {
+      "video": "assets/media/example-17-after.mp4",
+      "poster": "assets/media/example-17-after.jpg",
+      "score": 0.305,
+      "invalid": false,
+      "duration": 25.541667,
+      "sha256": "4cc68242183c17d8b753b5d7f12aa5e1231b087122ba7778f6267c75519b4305"
+    },
+    "galleryOrder": 33,
+    "preview": {
+      "video": "assets/media/example-17-preview.mp4",
+      "poster": "assets/media/example-17-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 21.5,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_heretic_c2-rep01-prm-decayed",
+    "title": "Heretic",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (decayed λ)",
+    "task": "s_4e_heretic_c2",
+    "rep": 1,
+    "focus": "Uncurated comparison · all available outputs",
+    "observed": "This pair is included in the complete inventory and has no curated qualitative caption. Validation failed for at least one submission; a validation zero is not a perceptual video-quality score.",
+    "caveat": "Same task and evaluation repetition. This inventory includes higher, lower and equal scores, as well as rejected submissions. It is not an estimate of average training effects.",
+    "size": "9B",
+    "number": "18",
+    "before": {
+      "video": "assets/media/example-18-before.mp4",
+      "poster": "assets/media/example-18-before.jpg",
+      "score": 0.0,
+      "invalid": true,
+      "duration": 16.642,
+      "sha256": "eaddf7a53013eb371b3d84e8c1a20f5f1a8349d831883d51242a5bc5643fc06d"
+    },
+    "after": {
+      "video": "assets/media/example-18-after.mp4",
+      "poster": "assets/media/example-18-after.jpg",
+      "score": 0.247,
+      "invalid": false,
+      "duration": 16.666667,
+      "sha256": "4a56adc79cdb8bd86f58fc665af0ac7833ef54f50494f61edf2447248c23ae1c"
+    },
+    "galleryOrder": 34,
+    "preview": {
+      "video": "assets/media/example-18-preview.mp4",
+      "poster": "assets/media/example-18-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 4.25,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_heretic_c9-rep04-prm-fixed",
+    "title": "Heretic",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (fixed λ = 0.5)",
+    "task": "s_4e_heretic_c9",
+    "rep": 4,
+    "focus": "Uncurated comparison · all available outputs",
+    "observed": "This pair is included in the complete inventory and has no curated qualitative caption. Validation failed for at least one submission; a validation zero is not a perceptual video-quality score.",
+    "caveat": "Same task and evaluation repetition. This inventory includes higher, lower and equal scores, as well as rejected submissions. It is not an estimate of average training effects.",
+    "size": "9B",
+    "number": "19",
+    "before": {
+      "video": "assets/media/example-19-before.mp4",
+      "poster": "assets/media/example-19-before.jpg",
+      "score": 0.0,
+      "invalid": true,
+      "duration": 25.416667,
+      "sha256": "9059550083eed6a1f9c6ff950c51c603802bc613b277b9e7374e6b1abd94dbd6"
+    },
+    "after": {
+      "video": "assets/media/example-19-after.mp4",
+      "poster": "assets/media/example-19-after.jpg",
+      "score": 0.308,
+      "invalid": false,
+      "duration": 24.373698,
+      "sha256": "199745112aee663060fb11cb7865fc090c6d043f1e721e3121883543d826c8ae"
+    },
+    "galleryOrder": 35,
+    "preview": {
+      "video": "assets/media/example-19-preview.mp4",
+      "poster": "assets/media/example-19-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 0.25,
+      "duration_seconds": 4.0
+    }
+  },
+  {
+    "id": "qwen35-9b-s_4e_theywillkillyou_c10-rep02-prm-fixed",
+    "title": "They Will Kill You",
+    "model": "Qwen3.5-9B",
+    "method": "GRPO+PRM (fixed λ = 0.5)",
+    "task": "s_4e_theywillkillyou_c10",
+    "rep": 2,
+    "focus": "Uncurated comparison · all available outputs",
+    "observed": "This pair is included in the complete inventory and has no curated qualitative caption. Validation failed for at least one submission; a validation zero is not a perceptual video-quality score.",
+    "caveat": "Same task and evaluation repetition. This inventory includes higher, lower and equal scores, as well as rejected submissions. It is not an estimate of average training effects.",
+    "size": "9B",
+    "number": "20",
+    "before": {
+      "video": "assets/media/example-20-before.mp4",
+      "poster": "assets/media/example-20-before.jpg",
+      "score": 0.0,
+      "invalid": true,
+      "duration": 13.166667,
+      "sha256": "d1ea928d152e7c9444ed2f995d30bfb7164557692c0532369c942b7b5ccad00a"
+    },
+    "after": {
+      "video": "assets/media/example-20-after.mp4",
+      "poster": "assets/media/example-20-after.jpg",
+      "score": 0.47,
+      "invalid": false,
+      "duration": 13.593333,
+      "sha256": "d400905c416cb219fcd1b7423b034fa62265701d98ddbc498b4ba0e14750e3c7"
+    },
+    "galleryOrder": 36,
+    "preview": {
+      "video": "assets/media/example-20-preview.mp4",
+      "poster": "assets/media/example-20-preview.jpg",
+      "muted": true,
+      "width": 640,
+      "height": 360,
+      "start_seconds": 1.25,
+      "duration_seconds": 4.0
     }
   }
 ];

@@ -1,4 +1,4 @@
-import {examples} from './examples.js?v=20261026-hd';
+import {examples} from './examples.js?v=20261026-collage';
 
 const $ = (selector) => document.querySelector(selector);
 const before = $('#video-before');
@@ -23,6 +23,15 @@ let filter = 'all';
 let resolution = 'hd';
 let comparisonOpener = null;
 let resumeFeature = false;
+let galleryPaused = reduceMotion;
+const galleryPreviews = new Map();
+const galleryObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    const state = galleryPreviews.get(entry.target);
+    if (state) state.visible = entry.isIntersecting;
+  }
+  syncGalleryPreviews();
+}, {threshold:.05}) : null;
 
 function displayMedia(side) { return resolution === 'hd' && side.hd ? side.hd : side; }
 
@@ -119,6 +128,7 @@ players.forEach((video) => {
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { pauseBoth(); featureVideo.pause(); }
   else if (featureVisible && !featurePaused && !comparisonDialog.open) featureVideo.play().catch(() => {});
+  syncGalleryPreviews();
 });
 
 function setFeature(index) {
@@ -161,7 +171,6 @@ function openComparison(example, opener) {
   resumeFeature = !featureVideo.paused;
   featureVideo.pause();
   document.querySelectorAll('.tile-preview').forEach(video => video.pause());
-  document.querySelectorAll('.is-previewing').forEach(tile => tile.classList.remove('is-previewing'));
   chooseExample(example);
   comparisonDialog.showModal();
   document.body.classList.add('modal-open');
@@ -181,6 +190,7 @@ comparisonDialog.addEventListener('close', () => {
   }
   comparisonOpener?.focus({preventScroll:true});
   if (resumeFeature && featureVisible && !featurePaused && !document.hidden) featureVideo.play().catch(() => {});
+  syncGalleryPreviews();
 });
 
 function showPlayerError(message) {
@@ -193,6 +203,11 @@ function chooseExample(example) {
   pauseBoth();
   active = example;
   $('#case-title').textContent = example.model;
+  const hasHD = Boolean(example.before.hd && example.after.hd);
+  document.querySelectorAll('[data-resolution]').forEach(button => {
+    button.hidden = button.dataset.resolution === 'hd' && !hasHD;
+    button.setAttribute('aria-pressed', String(button.dataset.resolution === (resolution === 'hd' && hasHD ? 'hd' : 'original')));
+  });
   $('#player-status').hidden = true;
   $('#player-status').textContent = '';
   for (const [index, video] of players.entries()) {
@@ -211,32 +226,68 @@ function chooseExample(example) {
 document.querySelectorAll('[data-resolution]').forEach(button => button.addEventListener('click', () => {
   if (resolution === button.dataset.resolution) return;
   resolution = button.dataset.resolution;
-  document.querySelectorAll('[data-resolution]').forEach(option => option.setAttribute('aria-pressed', String(option.dataset.resolution === resolution)));
   setFeature(featureIndex);
-  renderRail();
   chooseExample(active);
 }));
 
+function shouldRunPreview(state) {
+  return state.visible && state.tile.isConnected && !state.tile.hidden && !galleryPaused && !document.hidden && !comparisonDialog.open;
+}
+
+function syncGalleryPreviews() {
+  for (const state of galleryPreviews.values()) {
+    if (!shouldRunPreview(state)) { state.video.pause(); continue; }
+    if (!state.video.getAttribute('src')) state.video.src = state.source;
+    if (!state.video.paused || state.pending) continue;
+    state.pending = true;
+    state.video.play().then(() => {
+      state.pending = false;
+      if (shouldRunPreview(state)) state.tile.classList.add('is-previewing');
+      else state.video.pause();
+    }).catch(() => { state.pending = false; });
+  }
+}
+
+function updateGalleryControl() {
+  const button = $('#gallery-motion');
+  const label = galleryPaused ? 'Play previews' : 'Pause previews';
+  button.setAttribute('aria-label', label);
+  button.title = label;
+  button.replaceChildren(icon(galleryPaused ? 'play' : 'pause'));
+}
+
+$('#gallery-motion').addEventListener('click', () => {
+  galleryPaused = !galleryPaused;
+  updateGalleryControl();
+  syncGalleryPreviews();
+});
+
 function renderRail() {
   const rail = $('#example-rail');
-  rail.querySelectorAll('video').forEach(video => video.pause());
+  galleryObserver?.disconnect();
+  galleryPreviews.forEach(state => state.video.pause());
+  galleryPreviews.clear();
   rail.replaceChildren();
-  rail.classList.toggle('filtered', filter !== 'all');
-  for (const example of examples) {
+  let visibleIndex = 0;
+  for (const example of [...examples].sort((a,b) => a.galleryOrder - b.galleryOrder)) {
     const tile = document.createElement('button');
     tile.className = 'example-tile';
     tile.type = 'button';
     tile.dataset.id = example.id;
     tile.hidden = filter !== 'all' && example.size !== filter;
+    if (!tile.hidden) {
+      tile.dataset.layout = visibleIndex === 0 ? 'lead' : visibleIndex === 1 ? 'wide' : 'standard';
+      visibleIndex++;
+    }
     tile.setAttribute('aria-haspopup', 'dialog');
     tile.setAttribute('aria-controls', 'comparison-dialog');
     tile.setAttribute('aria-label', `Compare ${example.title}, ${example.model}, example ${example.number}`);
     const poster = document.createElement('img');
-    poster.src = displayMedia(example.after).poster;
+    poster.src = example.preview?.poster || example.after.poster;
     poster.alt = '';
     poster.loading = 'lazy';
-    poster.width = 604;
-    poster.height = 340;
+    poster.width = 854;
+    poster.height = 480;
     const preview = document.createElement('video');
     preview.className = 'tile-preview';
     preview.muted = true;
@@ -245,27 +296,20 @@ function renderRail() {
     preview.preload = 'none';
     preview.setAttribute('aria-hidden', 'true');
     preview.tabIndex = -1;
-    const previewStart = () => {
-      if (comparisonDialog.open || reduceMotion || !window.matchMedia('(hover: hover)').matches) return;
-      if (!preview.getAttribute('src')) preview.src = displayMedia(example.after).video;
-      preview.play().then(() => tile.classList.add('is-previewing')).catch(() => {});
-    };
-    const previewStop = () => { preview.pause(); tile.classList.remove('is-previewing'); };
-    tile.addEventListener('pointerenter', previewStart);
-    tile.addEventListener('pointerleave', previewStop);
-    tile.addEventListener('focus', previewStart);
-    tile.addEventListener('blur', previewStop);
     const prompt = document.createElement('span');
     prompt.className = 'tile-open';
     prompt.setAttribute('aria-hidden', 'true');
     prompt.append(icon('play'));
     tile.append(poster, preview, prompt);
-    tile.addEventListener('click', () => {
-      previewStop();
-      openComparison(example, tile);
-    });
+    tile.addEventListener('click', () => openComparison(example, tile));
     rail.append(tile);
+    const state = {tile,video:preview,source:example.preview?.video || example.after.video,visible:!galleryObserver,pending:false};
+    galleryPreviews.set(tile, state);
+    if (!tile.hidden) galleryObserver?.observe(tile);
   }
+  $('#example-count').textContent = `/ ${visibleIndex} selected pairs`;
+  updateGalleryControl();
+  syncGalleryPreviews();
 }
 
 document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
@@ -276,69 +320,6 @@ document.querySelectorAll('[data-filter]').forEach((button) => button.addEventLi
   const count = examples.filter((item) => filter === 'all' || item.size === filter).length;
   $('#example-count').textContent = `/ ${count} selected pairs`;
 }));
-
-const taskDescriptions = {
-  CS: {category:'CHOOSE WHAT BELONGS', title:'Content Selection', description:'Inspect candidate shots and select the footage that belongs in a trailer segment. The agent must connect a written brief to visual evidence.', deliverable:'Output: a selection of shots'},
-  NS: {category:'MAKE THE SEQUENCE WORK', title:'Narrative Sequencing', description:'Arrange a given set of shots into a coherent sequence. The agent must reason about visual continuity, narrative progression, and the order of events.', deliverable:'Output: an ordered shot sequence'},
-  RC: {category:'FIND THE RIGHT MOMENT', title:'Rough Cut', description:'Set clip boundaries within a fixed shot sequence. The agent must inspect the source footage and decide where each shot should begin and end.', deliverable:'Output: clip in-points and out-points'},
-  FC: {category:'BRING PICTURE AND SOUND TOGETHER', title:'Fine Cut', description:'Keep picture timing fixed while selecting and trimming dialogue, placing music, and coordinating picture and sound transitions. Submit the edit and a rendered artifact.', deliverable:'Output: editing decisions and a rendered video'}
-};
-
-function shot(number, chosen = false, dim = false) {
-  const item = document.createElement('div');
-  item.className = `mini-shot${chosen ? ' chosen' : ''}${dim ? ' dim' : ''}`;
-  const image = document.createElement('img');
-  image.src = examples[number % examples.length].after.poster;
-  image.alt = '';
-  image.loading = 'lazy';
-  const label = document.createElement('span');
-  label.textContent = `Shot ${String.fromCharCode(65 + number)}`;
-  item.append(image, label);
-  return item;
-}
-
-function setTask(key, focus = false) {
-  const task = taskDescriptions[key];
-  for (const [selector, value] of [['#task-category',task.category],['#task-title',task.title],['#task-description',task.description],['#task-deliverable',task.deliverable]]) $(selector).textContent = value;
-  document.querySelectorAll('[data-task]').forEach((button) => {
-    button.setAttribute('aria-selected', String(button.dataset.task === key));
-    button.tabIndex = button.dataset.task === key ? 0 : -1;
-    if (focus && button.dataset.task === key) button.focus();
-  });
-  $('#task-panel').setAttribute('aria-labelledby', `tab-${key.toLowerCase()}`);
-  const demo = $('#mini-edit');
-  demo.replaceChildren();
-  if (key === 'CS') [0,1,2,3].forEach((n) => demo.append(shot(n, n === 0 || n === 2, n === 1 || n === 3)));
-  if (key === 'NS') [2,0,3].forEach((n,index) => {
-    if (index) { const arrow = document.createElement('span'); arrow.className = 'mini-arrow'; arrow.textContent = '→'; demo.append(arrow); }
-    demo.append(shot(n));
-  });
-  if (key === 'RC') [0,1,2].forEach((n) => { const zone = document.createElement('div'); zone.className = 'cut-zone'; zone.append(shot(n)); demo.append(zone); });
-  if (key === 'FC') {
-    const tracks = document.createElement('div'); tracks.className = 'mini-tracks';
-    for (const [label, kind, blocks] of [['Picture','',4],['Dialogue','audio',2],['Music','music',1]]) {
-      const track = document.createElement('div'); track.className = 'track';
-      const name = document.createElement('span'); name.className = 'track-label'; name.textContent = label; track.append(name);
-      for (let i=0;i<blocks;i++) { const block = document.createElement('span'); block.className = `track-block ${kind}`; track.append(block); }
-      tracks.append(track);
-    }
-    demo.append(tracks);
-  }
-}
-
-document.querySelectorAll('[data-task]').forEach((button) => {
-  button.addEventListener('click', () => setTask(button.dataset.task));
-  button.addEventListener('keydown', (event) => {
-    const keys = ['CS','NS','RC','FC'];
-    let index = keys.indexOf(button.dataset.task);
-    if (event.key === 'ArrowRight') index = (index + 1) % 4;
-    else if (event.key === 'ArrowLeft') index = (index + 3) % 4;
-    else if (event.key === 'Home') index = 0;
-    else if (event.key === 'End') index = 3;
-    else return;
-    event.preventDefault(); setTask(keys[index], true);
-  });
-});
 
 $('#copy-citation').addEventListener('click', async () => {
   const text = $('#bibtex').textContent;
@@ -371,5 +352,4 @@ if ('IntersectionObserver' in window) {
 renderRail();
 applyAudio();
 updateTransport();
-setTask('CS');
 setFeature(featureIndex);
