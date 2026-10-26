@@ -17,7 +17,15 @@ export const examples = [
       "score": 0.448,
       "invalid": false,
       "duration": 7.125,
-      "sha256": "92ebd11fbb8aa71f4d6bb3b10cb0b13f4eea277267f98dfbaaeb8e2d5d7bf0bf"
+      "sha256": "92ebd11fbb8aa71f4d6bb3b10cb0b13f4eea277267f98dfbaaeb8e2d5d7bf0bf",
+      "hd": {
+        "video": "assets/media/example-01-before-hd.mp4",
+        "poster": "assets/media/example-01-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "5b58552dfd04e214ee76d87a64f2aeb0b0fe51e7f1c70818ed9c56058cc66223",
+        "original_pixel_frames": 6
+      }
     },
     "after": {
       "video": "assets/media/example-01-after.mp4",
@@ -25,7 +33,15 @@ export const examples = [
       "score": 0.783,
       "invalid": false,
       "duration": 7.049,
-      "sha256": "39931bc5cc28a3926c429fed8bc3084bbf7a4a43a01545cd981493f40aec171f"
+      "sha256": "39931bc5cc28a3926c429fed8bc3084bbf7a4a43a01545cd981493f40aec171f",
+      "hd": {
+        "video": "assets/media/example-01-after-hd.mp4",
+        "poster": "assets/media/example-01-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "1cc63fce5740390deea35b71dea1233e53260cf94fccf24f81b210005cd3c3d1",
+        "original_pixel_frames": 0
+      }
     }
   },
   {
@@ -46,7 +62,15 @@ export const examples = [
       "score": 0.043,
       "invalid": false,
       "duration": 7.333333,
-      "sha256": "6eeddfb5390e1e39e6d35f6f5f50857d3358de82eb802caa96ac961404359795"
+      "sha256": "6eeddfb5390e1e39e6d35f6f5f50857d3358de82eb802caa96ac961404359795",
+      "hd": {
+        "video": "assets/media/example-02-before-hd.mp4",
+        "poster": "assets/media/example-02-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "aef83df236e71efbbea98b4b63a59b5a6efb421e9d869e6e7bdbfa3fb610981d",
+        "original_pixel_frames": 0
+      }
     },
     "after": {
       "video": "assets/media/example-02-after.mp4",
@@ -54,7 +78,15 @@ export const examples = [
       "score": 0.764,
       "invalid": false,
       "duration": 7.0,
-      "sha256": "f08a753f0ecc1e65171daf301c15ac865745443e07225b608617dffed67f2cc3"
+      "sha256": "f08a753f0ecc1e65171daf301c15ac865745443e07225b608617dffed67f2cc3",
+      "hd": {
+        "video": "assets/media/example-02-after-hd.mp4",
+        "poster": "assets/media/example-02-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "f264ced18dcc6b5dbefd66b1b16d46f521a9dbfccec1a0e51cd2ceea1ecf1707",
+        "original_pixel_frames": 0
+      }
     }
   },
   {
@@ -75,7 +107,15 @@ export const examples = [
       "score": 0.284,
       "invalid": false,
       "duration": 6.25,
-      "sha256": "773e8f82dfe4d11906c8f9e436ba2d4d75e156c424cdf139de4c7dcc90d7c746"
+      "sha256": "773e8f82dfe4d11906c8f9e436ba2d4d75e156c424cdf139de4c7dcc90d7c746",
+      "hd": {
+        "video": "assets/media/example-03-before-hd.mp4",
+        "poster": "assets/media/example-03-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "f64f142c08db6642d88682f3b5828ef8f649e007e2e8cf250627934008ab5e71",
+        "original_pixel_frames": 0
+      }
     },
     "after": {
       "video": "assets/media/example-03-after.mp4",
@@ -83,7 +123,15 @@ export const examples = [
       "score": 0.573,
       "invalid": false,
       "duration": 6.214,
-      "sha256": "dfe695973adad24a95e77302cca8178be97b4a0e752718623994fcedad9cd67b"
+      "sha256": "dfe695973adad24a95e77302cca8178be97b4a0e752718623994fcedad9cd67b",
+      "hd": {
+        "video": "assets/media/example-03-after-hd.mp4",
+        "poster": "assets/media/example-03-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "99156cde44bf4c36146e37c7b2bd7043fff8f8dd212fe3c3a56db4a01ddc54d0",
+        "original_pixel_frames": 0
+      }
     }
   },
   {
@@ -104,7 +152,15 @@ export const examples = [
       "score": 0.117,
       "invalid": false,
       "duration": 6.214,
-      "sha256": "dfc334d4c35580a06605246a4ae2205a894eb2ecb58112d1237e5aa05763dd74"
+      "sha256": "dfc334d4c35580a06605246a4ae2205a894eb2ecb58112d1237e5aa05763dd74",
+      "hd": {
+        "video": "assets/media/example-04-before-hd.mp4",
+        "poster": "assets/media/example-04-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "b25154963969ddaeceb230164a3cc3a458e456fc506396bf66b37c3e81d672c8",
+        "original_pixel_frames": 0
+      }
     },
     "after": {
       "video": "assets/media/example-04-after.mp4",
@@ -112,7 +168,15 @@ export const examples = [
       "score": 0.504,
       "invalid": false,
       "duration": 6.291667,
-      "sha256": "93a326bcd62a193c4848b0991c303dbf5ee5e310fa2dac7d9676b47a5b68bb45"
+      "sha256": "93a326bcd62a193c4848b0991c303dbf5ee5e310fa2dac7d9676b47a5b68bb45",
+      "hd": {
+        "video": "assets/media/example-04-after-hd.mp4",
+        "poster": "assets/media/example-04-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "0d93c94fb7e5b87fd0c1e3d3112bd05b510c16e3003d7d2a01c875bb398dc470",
+        "original_pixel_frames": 0
+      }
     }
   },
   {
@@ -133,7 +197,15 @@ export const examples = [
       "score": 0.0,
       "invalid": true,
       "duration": 7.532,
-      "sha256": "23738a175d1221b367d2554b9bcd4307316a00f16cfb105a8f2af7fa64b0fe2d"
+      "sha256": "23738a175d1221b367d2554b9bcd4307316a00f16cfb105a8f2af7fa64b0fe2d",
+      "hd": {
+        "video": "assets/media/example-05-before-hd.mp4",
+        "poster": "assets/media/example-05-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "e21bfbf3643d01016fb7bf44867fe458e7d6cecefd109ac2082db7eb99d70232",
+        "original_pixel_frames": 0
+      }
     },
     "after": {
       "video": "assets/media/example-05-after.mp4",
@@ -141,7 +213,15 @@ export const examples = [
       "score": 0.769,
       "invalid": false,
       "duration": 7.166667,
-      "sha256": "4f6814d8fe0e955aef5c54ea1d9fd1105c5bc50dde5d01e1c0daf96e98b86f9a"
+      "sha256": "4f6814d8fe0e955aef5c54ea1d9fd1105c5bc50dde5d01e1c0daf96e98b86f9a",
+      "hd": {
+        "video": "assets/media/example-05-after-hd.mp4",
+        "poster": "assets/media/example-05-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "521c3931f23cf8469b91e096ad8a01daac30f7e69205d3f4aca2e1827cc77fd7",
+        "original_pixel_frames": 0
+      }
     }
   },
   {
@@ -162,7 +242,15 @@ export const examples = [
       "score": 0.375,
       "invalid": false,
       "duration": 9.385,
-      "sha256": "3ab11ae98a516e480a31e66f660c0af8b958aad4b4c96d5d54dab3470ecca820"
+      "sha256": "3ab11ae98a516e480a31e66f660c0af8b958aad4b4c96d5d54dab3470ecca820",
+      "hd": {
+        "video": "assets/media/example-06-before-hd.mp4",
+        "poster": "assets/media/example-06-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "ab6dbb34ae325e943ab3538bfd9fd1864bc77b227333758c26476d16fea0ae14",
+        "original_pixel_frames": 0
+      }
     },
     "after": {
       "video": "assets/media/example-06-after.mp4",
@@ -170,7 +258,15 @@ export const examples = [
       "score": 0.681,
       "invalid": false,
       "duration": 9.386,
-      "sha256": "2f567392c26b3d02cbf91c1758cbb526adbb04016b93ca1a7a136534cacb0115"
+      "sha256": "2f567392c26b3d02cbf91c1758cbb526adbb04016b93ca1a7a136534cacb0115",
+      "hd": {
+        "video": "assets/media/example-06-after-hd.mp4",
+        "poster": "assets/media/example-06-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "8e8d27629d1bf61d283175d941d8a6d1f2b09fe2f613fcdaddf75400597e79ed",
+        "original_pixel_frames": 0
+      }
     }
   },
   {
@@ -191,7 +287,15 @@ export const examples = [
       "score": 0.524,
       "invalid": false,
       "duration": 8.916667,
-      "sha256": "58d4e96c180e17d623be24b41e2efcc5015a467a20e2a2f77a50b57a1a7a0f98"
+      "sha256": "58d4e96c180e17d623be24b41e2efcc5015a467a20e2a2f77a50b57a1a7a0f98",
+      "hd": {
+        "video": "assets/media/example-07-before-hd.mp4",
+        "poster": "assets/media/example-07-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "1205b28b1456edf6eefbff28a16fc801fc600d1969e07b78f3c63ff5767c9911",
+        "original_pixel_frames": 0
+      }
     },
     "after": {
       "video": "assets/media/example-07-after.mp4",
@@ -199,7 +303,15 @@ export const examples = [
       "score": 0.905,
       "invalid": false,
       "duration": 8.875,
-      "sha256": "aa9fa8530507943ce69c0f8e4a06ffaf0f7a15a329e67e6ff62c5916b3acad87"
+      "sha256": "aa9fa8530507943ce69c0f8e4a06ffaf0f7a15a329e67e6ff62c5916b3acad87",
+      "hd": {
+        "video": "assets/media/example-07-after-hd.mp4",
+        "poster": "assets/media/example-07-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "c50f5b66449458aed4f1da7f6c0253b30959e1e9fa2ca6330d6af65947d69000",
+        "original_pixel_frames": 0
+      }
     }
   },
   {
@@ -220,7 +332,15 @@ export const examples = [
       "score": 0.206,
       "invalid": false,
       "duration": 10.51,
-      "sha256": "b7527ef358d732dfb0298ba2ed02f731e1e7c96f1d6b0f1073c3e69b116e8a08"
+      "sha256": "b7527ef358d732dfb0298ba2ed02f731e1e7c96f1d6b0f1073c3e69b116e8a08",
+      "hd": {
+        "video": "assets/media/example-08-before-hd.mp4",
+        "poster": "assets/media/example-08-before-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "9979121ae65f06909fe5e5e0e3b75b94e2e5d901df8cecf092f22eef6abfba7f",
+        "original_pixel_frames": 0
+      }
     },
     "after": {
       "video": "assets/media/example-08-after.mp4",
@@ -228,7 +348,15 @@ export const examples = [
       "score": 0.809,
       "invalid": false,
       "duration": 10.5105,
-      "sha256": "c99422f58b931f2caea62849221adbdb6e8ad9a189c2df917e46d36c5ce16f2a"
+      "sha256": "c99422f58b931f2caea62849221adbdb6e8ad9a189c2df917e46d36c5ce16f2a",
+      "hd": {
+        "video": "assets/media/example-08-after-hd.mp4",
+        "poster": "assets/media/example-08-after-hd.jpg",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "d93e3601c13022b77290b2c5fa847081df02cea2a57ddd4256cc6a594710bcd2",
+        "original_pixel_frames": 0
+      }
     }
   }
 ];

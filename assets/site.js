@@ -1,4 +1,4 @@
-import {examples} from './examples.js';
+import {examples} from './examples.js?v=20261026-hd';
 
 const $ = (selector) => document.querySelector(selector);
 const before = $('#video-before');
@@ -19,6 +19,9 @@ let playRequest = 0;
 let animation = 0;
 let seeking = false;
 let filter = 'all';
+let resolution = 'hd';
+
+function displayMedia(side) { return resolution === 'hd' && side.hd ? side.hd : side; }
 
 function icon(name) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -117,16 +120,18 @@ document.addEventListener('visibilitychange', () => {
 function setFeature(index) {
   featureIndex = index;
   const example = examples[index];
+  const media = displayMedia(example.after);
   featureVideo.autoplay = !featurePaused && featureVisible && !document.hidden;
   featureVideo.pause();
-  featureVideo.poster = example.after.poster;
-  if (featureVideo.getAttribute('src') !== example.after.video) {
-    featureVideo.src = example.after.video;
+  featureVideo.poster = media.poster;
+  if (featureVideo.getAttribute('src') !== media.video) {
+    featureVideo.src = media.video;
     featureVideo.load();
   }
   featureVideo.setAttribute('aria-label', `Muted preview: ${example.title}, ${example.model}, ${example.method}`);
   $('#feature-title').textContent = example.title;
   $('#feature-method').textContent = `${example.model} · ${example.method}`;
+  $('#feature-quality').textContent = resolution === 'hd' ? '1080p reconstruction' : 'Original 480p render';
   document.querySelectorAll('[data-feature]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.feature) === index)));
   if (!featurePaused && featureVisible && !document.hidden) featureVideo.play().catch(() => {});
 }
@@ -168,8 +173,9 @@ function chooseExample(example) {
   $('#after-score').textContent = scoreLabel(example.after);
   for (const [index, video] of players.entries()) {
     const side = example[index ? 'after' : 'before'];
-    video.poster = side.poster;
-    video.src = side.video;
+    const media = displayMedia(side);
+    video.poster = media.poster;
+    video.src = media.video;
     video.load();
     video.setAttribute('aria-label', `${example.title}: ${index ? example.method : 'untrained'} output, ${example.size}`);
   }
@@ -178,6 +184,18 @@ function chooseExample(example) {
   document.querySelectorAll('.example-tile').forEach((tile) => tile.setAttribute('aria-pressed', String(tile.dataset.id === example.id)));
   updateTransport();
 }
+
+document.querySelectorAll('[data-resolution]').forEach(button => button.addEventListener('click', () => {
+  if (resolution === button.dataset.resolution) return;
+  resolution = button.dataset.resolution;
+  document.querySelectorAll('[data-resolution]').forEach(option => option.setAttribute('aria-pressed', String(option.dataset.resolution === resolution)));
+  $('#render-note').textContent = resolution === 'hd'
+    ? 'HD reconstructions preserve the original frame timing and audio. Scores refer to the original evaluation renders.'
+    : 'Exact 480p evaluation renders, with the original video and audio files.';
+  setFeature(featureIndex);
+  renderRail();
+  chooseExample(active);
+}));
 
 function renderRail() {
   const rail = $('#example-rail');
@@ -193,7 +211,7 @@ function renderRail() {
     tile.setAttribute('aria-pressed', String(example.id === active.id));
     tile.setAttribute('aria-label', `${example.title}, ${example.size}, ${example.method}, repetition ${example.rep}`);
     const poster = document.createElement('img');
-    poster.src = example.after.poster;
+    poster.src = displayMedia(example.after).poster;
     poster.alt = '';
     poster.loading = 'lazy';
     poster.width = 604;
@@ -208,7 +226,7 @@ function renderRail() {
     preview.tabIndex = -1;
     const previewStart = () => {
       if (reduceMotion || !window.matchMedia('(hover: hover)').matches) return;
-      if (!preview.getAttribute('src')) preview.src = example.after.video;
+      if (!preview.getAttribute('src')) preview.src = displayMedia(example.after).video;
       preview.play().then(() => tile.classList.add('is-previewing')).catch(() => {});
     };
     const previewStop = () => { preview.pause(); tile.classList.remove('is-previewing'); };

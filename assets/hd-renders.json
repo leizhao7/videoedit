@@ -1,0 +1,443 @@
+{
+  "format": "videoedit-hd-presentation-v1",
+  "renders": [
+    {
+      "number": 1,
+      "side": "after",
+      "original_sha256": "39931bc5cc28a3926c429fed8bc3084bbf7a4a43a01545cd981493f40aec171f",
+      "hd_sha256": "1cc63fce5740390deea35b71dea1233e53260cf94fccf24f81b210005cd3c3d1",
+      "hd_bytes": 6636104,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 169,
+      "frame_types": {
+        "source": 157,
+        "blend": 0,
+        "solid": 12,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 1,
+      "side": "before",
+      "original_sha256": "92ebd11fbb8aa71f4d6bb3b10cb0b13f4eea277267f98dfbaaeb8e2d5d7bf0bf",
+      "hd_sha256": "5b58552dfd04e214ee76d87a64f2aeb0b0fe51e7f1c70818ed9c56058cc66223",
+      "hd_bytes": 7278838,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 171,
+      "frame_types": {
+        "source": 129,
+        "blend": 0,
+        "solid": 36,
+        "original": 6
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 2,
+      "side": "after",
+      "original_sha256": "f08a753f0ecc1e65171daf301c15ac865745443e07225b608617dffed67f2cc3",
+      "hd_sha256": "f264ced18dcc6b5dbefd66b1b16d46f521a9dbfccec1a0e51cd2ceea1ecf1707",
+      "hd_bytes": 6100979,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 168,
+      "frame_types": {
+        "source": 144,
+        "blend": 0,
+        "solid": 24,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 2,
+      "side": "before",
+      "original_sha256": "6eeddfb5390e1e39e6d35f6f5f50857d3358de82eb802caa96ac961404359795",
+      "hd_sha256": "aef83df236e71efbbea98b4b63a59b5a6efb421e9d869e6e7bdbfa3fb610981d",
+      "hd_bytes": 6167113,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 176,
+      "frame_types": {
+        "source": 150,
+        "blend": 0,
+        "solid": 26,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 3,
+      "side": "after",
+      "original_sha256": "dfe695973adad24a95e77302cca8178be97b4a0e752718623994fcedad9cd67b",
+      "hd_sha256": "99156cde44bf4c36146e37c7b2bd7043fff8f8dd212fe3c3a56db4a01ddc54d0",
+      "hd_bytes": 7769848,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 149,
+      "frame_types": {
+        "source": 117,
+        "card": 32,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 3,
+      "side": "before",
+      "original_sha256": "773e8f82dfe4d11906c8f9e436ba2d4d75e156c424cdf139de4c7dcc90d7c746",
+      "hd_sha256": "f64f142c08db6642d88682f3b5828ef8f649e007e2e8cf250627934008ab5e71",
+      "hd_bytes": 7441433,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 150,
+      "frame_types": {
+        "source": 115,
+        "blend": 0,
+        "solid": 35,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 4,
+      "side": "after",
+      "original_sha256": "93a326bcd62a193c4848b0991c303dbf5ee5e310fa2dac7d9676b47a5b68bb45",
+      "hd_sha256": "0d93c94fb7e5b87fd0c1e3d3112bd05b510c16e3003d7d2a01c875bb398dc470",
+      "hd_bytes": 7670739,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 151,
+      "frame_types": {
+        "source": 117,
+        "card": 34,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 4,
+      "side": "before",
+      "original_sha256": "dfc334d4c35580a06605246a4ae2205a894eb2ecb58112d1237e5aa05763dd74",
+      "hd_sha256": "b25154963969ddaeceb230164a3cc3a458e456fc506396bf66b37c3e81d672c8",
+      "hd_bytes": 1056630,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 22,
+      "frame_types": {
+        "source": 22,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 5,
+      "side": "after",
+      "original_sha256": "4f6814d8fe0e955aef5c54ea1d9fd1105c5bc50dde5d01e1c0daf96e98b86f9a",
+      "hd_sha256": "521c3931f23cf8469b91e096ad8a01daac30f7e69205d3f4aca2e1827cc77fd7",
+      "hd_bytes": 6467130,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 172,
+      "frame_types": {
+        "source": 172,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 5,
+      "side": "before",
+      "original_sha256": "23738a175d1221b367d2554b9bcd4307316a00f16cfb105a8f2af7fa64b0fe2d",
+      "hd_sha256": "e21bfbf3643d01016fb7bf44867fe458e7d6cecefd109ac2082db7eb99d70232",
+      "hd_bytes": 6421756,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 171,
+      "frame_types": {
+        "source": 171,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 6,
+      "side": "after",
+      "original_sha256": "2f567392c26b3d02cbf91c1758cbb526adbb04016b93ca1a7a136534cacb0115",
+      "hd_sha256": "8e8d27629d1bf61d283175d941d8a6d1f2b09fe2f613fcdaddf75400597e79ed",
+      "hd_bytes": 10836253,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 225,
+      "frame_types": {
+        "source": 195,
+        "card": 30,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 6,
+      "side": "before",
+      "original_sha256": "3ab11ae98a516e480a31e66f660c0af8b958aad4b4c96d5d54dab3470ecca820",
+      "hd_sha256": "ab6dbb34ae325e943ab3538bfd9fd1864bc77b227333758c26476d16fea0ae14",
+      "hd_bytes": 10852221,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 225,
+      "frame_types": {
+        "source": 195,
+        "card": 30,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 7,
+      "side": "after",
+      "original_sha256": "aa9fa8530507943ce69c0f8e4a06ffaf0f7a15a329e67e6ff62c5916b3acad87",
+      "hd_sha256": "c50f5b66449458aed4f1da7f6c0253b30959e1e9fa2ca6330d6af65947d69000",
+      "hd_bytes": 11791494,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 213,
+      "frame_types": {
+        "source": 204,
+        "blend": 0,
+        "solid": 9,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 7,
+      "side": "before",
+      "original_sha256": "58d4e96c180e17d623be24b41e2efcc5015a467a20e2a2f77a50b57a1a7a0f98",
+      "hd_sha256": "1205b28b1456edf6eefbff28a16fc801fc600d1969e07b78f3c63ff5767c9911",
+      "hd_bytes": 7797324,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 214,
+      "frame_types": {
+        "source": 207,
+        "blend": 0,
+        "solid": 7,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 8,
+      "side": "after",
+      "original_sha256": "c99422f58b931f2caea62849221adbdb6e8ad9a189c2df917e46d36c5ce16f2a",
+      "hd_sha256": "d93e3601c13022b77290b2c5fa847081df02cea2a57ddd4256cc6a594710bcd2",
+      "hd_bytes": 7346253,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 252,
+      "frame_types": {
+        "source": 236,
+        "card": 16,
+        "blend": 0,
+        "solid": 0,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    },
+    {
+      "number": 8,
+      "side": "before",
+      "original_sha256": "b7527ef358d732dfb0298ba2ed02f731e1e7c96f1d6b0f1073c3e69b116e8a08",
+      "hd_sha256": "9979121ae65f06909fe5e5e0e3b75b94e2e5d901df8cecf092f22eef6abfba7f",
+      "hd_bytes": 7367459,
+      "checks": {
+        "dimensions_1920x1080": true,
+        "frame_count_matches": true,
+        "frame_pts_and_durations_match": true,
+        "audio_payloads_and_packet_times_match": true,
+        "finite_fit_statistics": true,
+        "full_decode_passes": true
+      },
+      "frame_count": 252,
+      "frame_types": {
+        "source": 235,
+        "card": 15,
+        "blend": 0,
+        "solid": 2,
+        "original": 0
+      },
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "note": "Presentation reconstruction; evaluation scores refer to the original 480p artifact. HD frames are aligned to saved source shots. Model-generated text cards use saved render recipes. Ambiguous picture frames retain original pixels."
+    }
+  ]
+}
