@@ -152,3 +152,9 @@ body.modal-open{overflow:hidden}
 @media(max-width:600px){.task-section{padding:56px 0 36px}.task-heading{margin-bottom:24px}.task-heading h2{font-size:27px;line-height:1.25;letter-spacing:-.6px}.task-heading h2>span{font-size:17px;line-height:1.5;margin-top:10px}.task-film-wall img{border-radius:9px}.task-film-wall figcaption{font-size:10px;gap:10px}.task-film-wall figcaption a{font-size:9px}.task-types-figure{margin-top:24px}.task-type-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.task-types-figure figcaption{font-size:10px}.task-generation-footer{margin-top:20px;padding-top:17px}.task-generation-footer p{font-size:11px;line-height:1.8}}
 
 .task-film-wall>a{display:block;cursor:zoom-in}
+
+.task-generation-intro{max-width:1040px;margin:-9px 0 29px 72px;font-size:15px;line-height:1.85;color:#64748b}
+.task-generation-intro strong{font-weight:500;color:#334155}
+.task-film-wall figcaption,.task-generation-footer{justify-content:flex-end}
+@media(max-width:800px){.task-generation-intro{margin-left:64px;font-size:14px}}
+@media(max-width:600px){.task-generation-intro{margin:-5px 0 23px;font-size:13px;line-height:1.85}}
