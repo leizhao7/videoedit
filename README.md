@@ -20,7 +20,7 @@ The workflow in `.github/workflows/pages.yml` deploys the static files when `mai
 
 ## Content updates
 
-- `index.html`: paper information, section text, model links and software citation. The paper link is marked forthcoming until a verified URL is available.
+- `index.html`: paper information, section text, model links and paper citation. The paper link and BibTeX cite [arXiv:2610.35497](https://arxiv.org/abs/2610.35497).
 - `assets/examples.js`: the 20 selected same-task, same-repetition comparisons, their original clips, individual scores and qualified recorded observations.
 - `assets/site.js`: muted preview cards, an on-demand comparison dialog with synchronized playback and audio-side selection, model filtering, viewport-aware muted previews and accessible comparison controls.
 - `assets/style.css`: responsive layout, typography and colors.
