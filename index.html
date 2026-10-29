@@ -19,13 +19,14 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-400.ttf" crossorigin>
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-600.ttf" crossorigin>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css?v=20261029-brand-links">
   <script type="module" src="assets/site.js?v=20261026-linked-demos"></script>
 </head>
 <body>
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-watch" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="m10 8 6 4-6 4Z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
     <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/></symbol>
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
@@ -39,8 +40,8 @@
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="#top" aria-label="VideoEdit home"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="20" height="16" rx="4"/><path d="m23 13 6-4v14l-6-4M12 12l6 4-6 4ZM8 4h12M10 28h8"/></svg><span>VideoEdit<span class="brand-dot">.</span></span></a>
-      <nav aria-label="Main navigation"><a href="#showcase">Showcase</a><a href="#tasks">Tasks</a><a href="#training">Training</a><a href="#findings">Findings</a><a href="#models">Models</a><a href="#gallery">Gallery</a><a href="#citation">Cite</a></nav>
-      <a class="nav-code" href="https://github.com/leizhao7/video-editing-credit-assignment" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-code"/></svg><span>Code</span><svg class="icon small"><use href="#i-arrow"/></svg></a>
+      <nav aria-label="Main navigation"><a href="#showcase">Showcase</a><a href="#tasks">Tasks</a><a href="#training">Training</a><a href="#findings">Findings</a><a href="https://huggingface.co/collections/leizhao7/when-fine-grained-credit-assignment-helps-and-hurts" target="_blank" rel="noopener noreferrer">Models</a><a href="#gallery">Gallery</a><a href="#citation">Cite</a></nav>
+      <a class="nav-code" href="https://github.com/leizhao7/video-editing-credit-assignment" target="_blank" rel="noopener noreferrer"><img class="brand-logo brand-logo--github" src="assets/icons/github.svg" width="20" height="20" alt="" aria-hidden="true"><span>Code</span><svg class="icon small"><use href="#i-arrow"/></svg></a>
     </div>
   </header>
 
@@ -55,7 +56,7 @@
       <div class="authors"><a href="mailto:leizhao7@upenn.edu">Lei Zhao<sup>1</sup></a><a href="mailto:tom@philolabs.ai">Zongheng Cao<sup>2</sup></a><a href="mailto:christine@philolabs.ai">Xinyu Hu<sup>2</sup></a></div>
       <div class="affiliations"><a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer"><sup>1</sup> University of Pennsylvania</a><a href="https://philolabs.ai/" target="_blank" rel="noopener noreferrer"><sup>2</sup> Philo Labs</a></div>
       <p class="internship">Part of this work was completed while Lei Zhao was an intern at Philo Labs.</p>
-      <div class="hero-actions"><a class="button" href="https://arxiv.org/abs/2610.35497" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-file"/></svg>Paper<svg class="icon small"><use href="#i-arrow"/></svg></a><a class="button primary" href="https://github.com/leizhao7/video-editing-credit-assignment" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-code"/></svg>Code<svg class="icon small"><use href="#i-arrow"/></svg></a><a class="button" href="#models"><svg class="icon"><use href="#i-cube"/></svg>Models</a><a class="button" href="#showcase"><svg class="icon"><use href="#i-play"/></svg>Watch the edits</a></div>
+      <div class="hero-actions"><a class="button" href="https://arxiv.org/abs/2610.35497" target="_blank" rel="noopener noreferrer"><img class="brand-logo brand-logo--arxiv" src="assets/icons/arxiv.svg" width="20" height="20" alt="" aria-hidden="true">Paper<svg class="icon small" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="button primary" href="https://github.com/leizhao7/video-editing-credit-assignment" target="_blank" rel="noopener noreferrer"><img class="brand-logo brand-logo--github" src="assets/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">Code<svg class="icon small" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="button" href="https://huggingface.co/collections/leizhao7/when-fine-grained-credit-assignment-helps-and-hurts" target="_blank" rel="noopener noreferrer"><img class="brand-logo brand-logo--huggingface" src="assets/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Models<svg class="icon small" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="button" href="#showcase"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-watch"/></svg>Watch the edits</a></div>
       <p class="hero-intro">We turn movies and their trailers into video-editing tasks, then train multimodal agents to inspect footage, reason about editing decisions, and use editing tools. On held-out films, we study when finer-grained feedback helps—and when it hurts task completion. The project brings together our scalable task-generation pipeline, RL training code, and outcome graders.</p>
       </div>
     </section>
