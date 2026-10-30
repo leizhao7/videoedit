@@ -243,10 +243,3 @@ body.modal-open{overflow:hidden}
 
 /* Brand marks identify the public paper, code, and model destinations. */
 .brand-logo{display:block;width:18px;height:18px;object-fit:contain;flex-shrink:0}.brand-logo--huggingface{width:20px;height:20px}.button.primary .brand-logo--github{filter:brightness(0) invert(1)}
-
-/* Task filters distinguish silent cut-list renders from Fine Cut deliveries. */
-.example-toolbar{flex-wrap:wrap}
-.gallery-controls{flex-wrap:wrap;max-width:100%}
-.task-filter{padding-right:12px;border-right:1px solid #e5e7eb}
-.comparison-dialog .audio-switch[hidden]{display:none}
-@media(max-width:600px){.gallery-controls{gap:8px}.task-filter{padding-right:8px}.example-toolbar{align-items:flex-start}}

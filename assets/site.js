@@ -1,4 +1,4 @@
-import {examples} from './examples.js?v=20261030-rough-cut';
+import {examples} from './examples.js?v=20261026-collage';
 
 const $ = (selector) => document.querySelector(selector);
 const before = $('#video-before');
@@ -20,8 +20,6 @@ let playRequest = 0;
 let animation = 0;
 let seeking = false;
 let filter = 'all';
-const requestedTask = new URLSearchParams(window.location.search).get('task')?.toUpperCase();
-let taskFilter = ['RC', 'FC'].includes(requestedTask) ? requestedTask : 'all';
 let resolution = 'hd';
 let comparisonOpener = null;
 let resumeFeature = false;
@@ -36,11 +34,6 @@ const galleryObserver = 'IntersectionObserver' in window ? new IntersectionObser
 }, {threshold:.05}) : null;
 
 function displayMedia(side) { return resolution === 'hd' && side.hd ? side.hd : side; }
-function taskType(example) { return example.task.startsWith('s_3_') ? 'RC' : 'FC'; }
-function matchesFilters(example) {
-  return (filter === 'all' || example.size === filter) &&
-    (taskFilter === 'all' || taskType(example) === taskFilter);
-}
 
 function icon(name) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -211,13 +204,6 @@ function chooseExample(example) {
   active = example;
   $('#case-title').textContent = example.model;
   const hasHD = Boolean(example.before.hd && example.after.hd);
-  const roughCut = taskType(example) === 'RC';
-  document.querySelector('[data-resolution="original"]').textContent = roughCut ? 'Cut-list render' : 'Original';
-  document.querySelector('[data-resolution="original"]').disabled = roughCut;
-  document.querySelector('.audio-switch').hidden = roughCut;
-  $('#dialog-description').textContent = roughCut
-    ? 'Rough Cut comparison rendered from the original submitted cut lists and verified task footage. This picture-only task is silent; clip order and model-selected cut points are preserved.'
-    : 'Compare the untrained and RL-trained models on the same editing task. HD reconstructions preserve original frame timing and audio. Original opens the exact evaluated files.';
   document.querySelectorAll('[data-resolution]').forEach(button => {
     button.hidden = button.dataset.resolution === 'hd' && !hasHD;
     button.setAttribute('aria-pressed', String(button.dataset.resolution === (resolution === 'hd' && hasHD ? 'hd' : 'original')));
@@ -288,14 +274,14 @@ function renderRail() {
     tile.className = 'example-tile';
     tile.type = 'button';
     tile.dataset.id = example.id;
-    tile.hidden = !matchesFilters(example);
+    tile.hidden = filter !== 'all' && example.size !== filter;
     if (!tile.hidden) {
       tile.dataset.layout = visibleIndex === 0 ? 'lead' : visibleIndex === 1 ? 'wide' : 'standard';
       visibleIndex++;
     }
     tile.setAttribute('aria-haspopup', 'dialog');
     tile.setAttribute('aria-controls', 'comparison-dialog');
-    tile.setAttribute('aria-label', `Compare ${example.title}, ${example.model}, ${taskType(example) === 'RC' ? 'Rough Cut' : 'Fine Cut'}, example ${example.number}`);
+    tile.setAttribute('aria-label', `Compare ${example.title}, ${example.model}, example ${example.number}`);
     const poster = document.createElement('img');
     poster.src = example.preview?.poster || example.after.poster;
     poster.alt = '';
@@ -331,18 +317,9 @@ document.querySelectorAll('[data-filter]').forEach((button) => button.addEventLi
   document.querySelectorAll('[data-filter]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
   if (filter !== 'all' && active.size !== filter) active = examples.find((item) => item.size === filter);
   renderRail();
-  const count = examples.filter(matchesFilters).length;
+  const count = examples.filter((item) => filter === 'all' || item.size === filter).length;
   $('#example-count').textContent = `/ ${count} selected pairs`;
 }));
-
-document.querySelectorAll('[data-task-filter]').forEach((button) => {
-  button.setAttribute('aria-pressed', String(button.dataset.taskFilter === taskFilter));
-  button.addEventListener('click', () => {
-    taskFilter = button.dataset.taskFilter;
-    document.querySelectorAll('[data-task-filter]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-    renderRail();
-  });
-});
 
 $('#copy-citation').addEventListener('click', async () => {
   const text = $('#bibtex').textContent;
