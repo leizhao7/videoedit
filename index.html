@@ -19,8 +19,8 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-400.ttf" crossorigin>
   <link rel="preload" as="font" type="font/ttf" href="assets/fonts/geist-600.ttf" crossorigin>
-  <link rel="stylesheet" href="assets/style.css?v=20261029-brand-links">
-  <script type="module" src="assets/site.js?v=20261026-linked-demos"></script>
+  <link rel="stylesheet" href="assets/style.css?v=20261030-rough-cut">
+  <script type="module" src="assets/site.js?v=20261030-rough-cut"></script>
 </head>
 <body>
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -81,8 +81,8 @@
     </section>
 
     <section class="showcase section-shell" id="showcase" aria-labelledby="showcase-title">
-      <div class="section-heading showcase-heading"><div><span class="section-number">01</span><div class="eyebrow">Showcase</div><h2 id="showcase-title">Same footage. A different edit.</h2></div><p>Click a preview to compare the edits.<br><span class="audio-hint"><svg class="icon"><use href="#i-volume"/></svg>Watch with sound in the comparison viewer.</span></p></div>
-      <div class="example-toolbar" id="gallery"><span>Selected comparisons <span class="subtle" id="example-count"></span></span><div class="gallery-controls"><button type="button" class="gallery-motion" id="gallery-motion" aria-label="Pause previews" title="Pause previews"><svg class="icon"><use href="#i-pause"/></svg></button><div class="model-filter" role="group" aria-label="Filter examples by model size"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="9B" aria-pressed="false">9B</button><button type="button" data-filter="35B" aria-pressed="false">35B</button></div></div></div>
+      <div class="section-heading showcase-heading"><div><span class="section-number">01</span><div class="eyebrow">Showcase</div><h2 id="showcase-title">Same footage. A different edit.</h2></div><p>Click a preview to compare the edits.<br><span class="audio-hint"><svg class="icon"><use href="#i-volume"/></svg>Fine Cut includes sound; Rough Cut is picture-only.</span></p></div>
+      <div class="example-toolbar" id="gallery"><span>Selected comparisons <span class="subtle" id="example-count"></span></span><div class="gallery-controls"><div class="model-filter task-filter" role="group" aria-label="Filter examples by editing task"><button type="button" data-task-filter="all" aria-pressed="true">All tasks</button><button type="button" data-task-filter="RC" aria-pressed="false">Rough Cut</button><button type="button" data-task-filter="FC" aria-pressed="false">Fine Cut</button></div><button type="button" class="gallery-motion" id="gallery-motion" aria-label="Pause previews" title="Pause previews"><svg class="icon"><use href="#i-pause"/></svg></button><div class="model-filter" role="group" aria-label="Filter examples by model size"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="9B" aria-pressed="false">9B</button><button type="button" data-filter="35B" aria-pressed="false">35B</button></div></div></div>
       <div class="example-rail" id="example-rail" aria-label="Choose a video comparison"></div>
 
     </section>

@@ -2,7 +2,7 @@
 
 Project page for **When Fine-Grained Credit Assignment Helps and Hurts: Multimodal Agentic Reinforcement Learning through Video Editing**, by Lei Zhao, Zongheng Cao, and Xinyu Hu.
 
-This repository contains only the static project website and the 20 explicitly selected before/after examples. The training code lives in [video-editing-credit-assignment](https://github.com/leizhao7/video-editing-credit-assignment). Model cards are at [VideoEdit-Qwen3.5-9B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.5-9B) and [VideoEdit-Qwen3.6-35B-A3B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.6-35B-A3B).
+This repository contains only the static project website and 24 selected before/after examples: 20 Fine Cut pairs and four Rough Cut pairs. The training code lives in [video-editing-credit-assignment](https://github.com/leizhao7/video-editing-credit-assignment). Model cards are at [VideoEdit-Qwen3.5-9B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.5-9B) and [VideoEdit-Qwen3.6-35B-A3B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.6-35B-A3B).
 
 ## Local preview
 
@@ -21,7 +21,7 @@ The workflow in `.github/workflows/pages.yml` deploys the static files when `mai
 ## Content updates
 
 - `index.html`: paper information, section text, model links and paper citation. The paper link and BibTeX cite [arXiv:2610.35497](https://arxiv.org/abs/2610.35497).
-- `assets/examples.js`: the 20 selected same-task, same-repetition comparisons, their original clips, individual scores and qualified recorded observations.
+- `assets/examples.js`: the 24 selected same-task, same-repetition comparisons, their display media, individual scores and qualified recorded observations.
 - `assets/site.js`: muted preview cards, an on-demand comparison dialog with synchronized playback and audio-side selection, model filtering, viewport-aware muted previews and accessible comparison controls.
 - `assets/style.css`: responsive layout, typography and colors.
 
@@ -31,7 +31,7 @@ The recorded videos are 854 × 480 and remain available through **Original**. Wh
 
 The featured player preserves the full source aspect ratio and places the film-switching dots and pause control below the picture. Its width is capped at 854 CSS pixels so the 1920 × 1080 reconstruction remains crisp on a Retina display. HD provenance hashes, frame counts, and verification results are in [assets/hd-renders.json](assets/hd-renders.json).
 
-The 20 previews form a responsive mosaic with a larger opening tile and wide accents, with no text overlays. Lightweight silent excerpts of up to four seconds play only while visible and pause when a comparison opens, the page is hidden, or the preview pause control is selected. Reduced-motion settings start the mosaic paused. Mosaic tiles may crop the framing for the layout; comparison players preserve the full frame. Newly added examples use the exact original renders; HD controls appear only for pairs with verified reconstructions. Previews show the footage without text overlays. Clicking the featured video or a gallery card opens a dark paired viewer with shared playback, audio and resolution controls. Close it with the close button, Escape or the backdrop; closing pauses both videos and returns focus to the preview. Individual scores and recorded analysis remain in `assets/examples.js` and `assets/examples.json`, rather than appearing in the viewer.
+The 24 previews form a responsive mosaic with a larger opening tile and wide accents, with no text overlays. Lightweight silent excerpts of up to four seconds play only while visible and pause when a comparison opens, the page is hidden, or the preview pause control is selected. Reduced-motion settings start the mosaic paused. Mosaic tiles may crop the framing for the layout; comparison players preserve the full frame. Fine Cut pairs use original evaluated renders or verified HD reconstructions; Rough Cut pairs use the cut-list presentation renders described below. HD controls appear only for pairs with verified reconstructions. Previews show the footage without text overlays. Clicking the featured video or a gallery card opens a dark paired viewer with shared playback, audio and resolution controls. Close it with the close button, Escape or the backdrop; closing pauses both videos and returns focus to the preview. Individual scores and recorded analysis remain in `assets/examples.js` and `assets/examples.json`, rather than appearing in the viewer.
 
 Site-authored HTML, CSS and JavaScript are MIT licensed. The film posters and video excerpts remain subject to their respective rights; they are not covered by the website code license. Poster credits are in [POSTER_CREDITS.md](POSTER_CREDITS.md).
 
@@ -48,3 +48,9 @@ Each of the three findings has separate evidence: `assets/finding-task-gains.svg
 The title background reuses the credited poster collage without blur: clear, slightly tilted posters frame the white reading area and fade into the page below. No poster pixels are changed. Model cards compare the untrained base, outcome-only GRPO, and the released VideoEdit checkpoint using the corresponding Hugging Face model-card figures: avg@4 for 9B and three complete repetitions (avg@3) for 35B. The 35B retained repetition subsets differ between policies; the linked model card provides the full protocol.
 
 Two selected comparison GIFs in `assets/demos/` are shared with the code README. The `?example=04#showcase` and `?example=06#showcase` query links open the matching 9B and 35B paired viewers directly. These are selected presentation excerpts, not additional evaluations.
+
+## Rough Cut comparisons
+
+Four S3 pairs (examples 21–24) compare the released 9B and 35B policies with their untrained base on the same task and evaluation repetition. S3 delivers `cuts.json`, rather than a finished movie. These silent presentation videos apply the original submitted in/out points in the supplied clip order to the exact verified task footage at its native 854 × 480 resolution. Frame selection and 24 fps normalization follow the continuous-evidence rendering contract. No cuts are corrected, clips reordered, audio added, or new rollouts/grades performed. Timing quantization and source/cut/render hashes are recorded in [assets/rough-cut-renders.json](assets/rough-cut-renders.json). Input task bundles, grading references, and private logs are not distributed.
+
+Use the Rough Cut / Fine Cut filters independently of the model-size filter. [Open the four Rough Cut pairs](https://leizhao7.github.io/videoedit/?task=RC#showcase). The paired viewer labels these as cut-list renders and hides audio controls for this picture-only task.
