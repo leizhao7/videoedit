@@ -2,7 +2,7 @@
 
 Project page for **When Fine-Grained Credit Assignment Helps and Hurts: Multimodal Agentic Reinforcement Learning through Video Editing**, by Lei Zhao, Zongheng Cao, and Xinyu Hu.
 
-This repository contains only the static project website and the 20 explicitly selected before/after examples. The training code lives in [video-editing-credit-assignment](https://github.com/leizhao7/video-editing-credit-assignment). Model cards are at [VideoEdit-Qwen3.5-9B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.5-9B) and [VideoEdit-Qwen3.6-35B-A3B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.6-35B-A3B).
+This repository contains the static project website, the 53-second project film, and the 20 explicitly selected before/after examples. The training code lives in [video-editing-credit-assignment](https://github.com/leizhao7/video-editing-credit-assignment). Model cards are at [VideoEdit-Qwen3.5-9B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.5-9B) and [VideoEdit-Qwen3.6-35B-A3B](https://huggingface.co/leizhao7/VideoEdit-Qwen3.6-35B-A3B).
 
 ## Local preview
 
@@ -48,3 +48,13 @@ Each of the three findings has separate evidence: `assets/finding-task-gains.svg
 The title background reuses the credited poster collage without blur: clear, slightly tilted posters frame the white reading area and fade into the page below. No poster pixels are changed. Model cards compare the untrained base, outcome-only GRPO, and the released VideoEdit checkpoint using the corresponding Hugging Face model-card figures: avg@4 for 9B and three complete repetitions (avg@3) for 35B. The 35B retained repetition subsets differ between policies; the linked model card provides the full protocol.
 
 Two selected comparison GIFs in `assets/demos/` are shared with the code README. The `?example=04#showcase` and `?example=06#showcase` query links open the matching 9B and 35B paired viewers directly. These are selected presentation excerpts, not additional evaluations.
+
+## Project film
+
+[Watch the 53-second project film](https://leizhao7.github.io/videoedit/film.html) · [Download the 1080p MP4](https://leizhao7.github.io/videoedit/assets/media/videoedit-project-film.mp4)
+
+[![VideoEdit project film](assets/media/videoedit-project-film.jpg)](https://leizhao7.github.io/videoedit/film.html)
+
+The film presents the scalable task pipeline, four editing tasks, trajectory-/turn-/token-level learning signals, the paper's three main findings, and reported overall-score gains for the 9B and 35B checkpoints. The main-page **Watch film** button opens an accessible native player with sound and seeking. It loads on demand and does not autoplay.
+
+`assets/media/videoedit-project-film.mp4` is the approved final 53-second, 1080p export. Its soundtrack is an original 124 BPM instrumental synthesized from notes and percussion, without sampled third-party music. The film contains no voice-over or source-movie dialogue. Feedback diagrams and task demonstrations are presentation animations, and aggregate experimental scores retain the previously documented model-card protocols. Selected movie footage remains subject to its original rights and is outside the website's MIT code license. No private working files or analysis records accompany this release.
